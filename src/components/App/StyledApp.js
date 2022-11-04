@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import breakpoints from '../../styles/breakpoints';
 
-const StyledDiv = styled.div`
+const StyledApp = styled.div`
   height: 100%;
   display: grid;
   grid-template-rows: repeat(2, 50%);
@@ -52,10 +52,4 @@ const StyledDiv = styled.div`
   
   `
 
-  export default function StyledApp({children}) {
-    return (
-      <StyledDiv>
-        {children}
-      </StyledDiv>
-    )
-  }
+  export default StyledApp

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import breakpoints from '../styles/breakpoints';
+import { H5, P } from './Styled';
 import { ReactComponent as IconRefresh } from '../assets/desktop/icon-refresh.svg'
 
 const StyledFig = styled.figure`
@@ -16,32 +17,17 @@ const StyledFig = styled.figure`
   }
 
   blockquote {
-    font-weight: 400;
-    font-size: 1.125rem;
-    line-height: calc(28/18);
-    text-transform: capitalize;
-
     ::before, ::after {
       content: '"'
     }
   }
-  
-
-  figcaption {
-    margin-block-start: .8125rem;
-    font-size: 1.125rem;
-    font-weight: 700;
-    line-height: calc(28/18);  
-    text-transform: capitalize;
-    font-style: normal;
-  }
 
   button {
-  background: none;
-  border-radius: 50%;
-  padding: .66875rem;
-  height: fit-content;
-  width: fit-content;
+    background: none;
+    border-radius: 50%;
+    padding: .66875rem;
+    height: fit-content;
+    width: fit-content;
   }
 `
 
@@ -49,12 +35,12 @@ export default function Quotation() {
   return (
     <StyledFig >
     <div className="wrapper">
-      <blockquote>
+      <P as="blockquote">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta et diam in vestibulum. Aliquam nunc enim, condimentum in volutpat viverra, ultricies non sem.
-      </blockquote>
-      <figcaption>
+      </P>
+      <H5 as="figcaption">
         Phasellus eu Nisi Mauris
-      </figcaption>
+      </H5>
     </div>
     <button>
       <IconRefresh />
