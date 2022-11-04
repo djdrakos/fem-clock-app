@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
-
 :root {
   --black: hsl(0, 0%, 0%);
   --white: hsl(0, 0%, 100%);
@@ -91,6 +90,7 @@ p {
 }
 
 h1 {
+  display: inline-block;
   font-size: 12.5rem;
   font-weight: 700;
   line-height: 1;
