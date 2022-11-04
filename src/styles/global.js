@@ -5,6 +5,7 @@ export const GlobalStyles = createGlobalStyle`
   --black: hsl(0, 0%, 0%);
   --white: hsl(0, 0%, 100%);
   --grey-dark: hsl(0, 0%, 19%);
+  --grey-mid: hsla(0, 0%, 50%);
   --grey-light: hsl(0, 0%, 60%);
 }
 
