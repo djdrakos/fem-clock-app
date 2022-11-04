@@ -4,18 +4,12 @@ import { ReactComponent as IconArrowDown } from '../../assets/desktop/icon-arrow
 import { ReactComponent as IconArrowUp } from '../../assets/desktop/icon-arrow-up.svg'
 import { ReactComponent as IconSun } from '../../assets/desktop/icon-sun.svg'
 import { ReactComponent as IconMoon } from '../../assets/desktop/icon-moon.svg'
+import Quotation from '../Quotation'
 
 function App() {
   return (
     <StyledApp>
-      <aside>
-        <p>
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta et diam in vestibulum. Aliquam nunc enim, condimentum in volutpat viverra, ultricies non sem.'
-        </p>
-        <h5>
-          Phasellus eu Nisi Mauris
-        </h5>
-      </aside>
+      <Quotation />
       <main>
         <h4>
           { true 

@@ -28,7 +28,6 @@ body {
   /* background-image: ${({ theme }) => theme.background}; */
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  /* line-height: 1rem; */
   scroll-behavior: smooth;
   /* -webkit-transition: background-color .25s ease-out, color .25s ease-out;
   -moz-transition: background-color .25s ease-out, color .25s ease-out;
@@ -56,37 +55,29 @@ ul, ol {
   padding: 0;
 }
 
-button {
-  cursor: pointer;
-  color: var(--grey-dark);
-  background: var(--white);
-  border-radius: 28px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .3125rem;
-  display: flex;
-  flex-direction: row;
-  padding: 8px;
-  column-gap: 13px;
-  align-content: center;
-  align-items: center;
-  border: none;
+blockquote { 
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  background: transparent;
+  quotes: none;
 }
 
-svg {
-  fill: var(--black);
-  stroke: var(--black);
-  background-color: var(--black);
-  border-radius: 50%;
-  height: 40px;
-  width: 40px;
+button {
+  cursor: pointer;
+  border: none;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
 }
 
 p {
   font-weight: 400;
-  font-size: 1.125rem;
-  line-height: calc(28/18);
-  text-transform: capitalize;
+    font-size: 1.125rem;
+    line-height: calc(28/18);
+    text-transform: capitalize;
 }
 
 h1 {
@@ -122,11 +113,14 @@ h4 {
 }
 
 h5 {
+  margin-block-start: .8125rem;
   font-size: 1.125rem;
   font-weight: 700;
   line-height: calc(28/18);  
   text-transform: capitalize;
+  font-style: normal;
 }
+
 h6 {
   font-size: .9375rem;
   font-weight: 400;
