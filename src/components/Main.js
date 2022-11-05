@@ -8,6 +8,7 @@ import breakpoints from '../styles/breakpoints';
 
 const Styled = styled.main`
   display: flex;
+  background-color: hsla(0, 0%, 0%, .4);
 
   section {
     display: flex;

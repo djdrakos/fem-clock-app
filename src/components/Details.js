@@ -3,6 +3,7 @@ import { H2, H6 } from './Styled'
 import breakpoints from '../styles/breakpoints';
 
 const Styled = styled.section`
+height: 100%;
   display: grid;
   grid-template-rows: auto auto;
   grid-template-columns: 68% 29%;
@@ -11,15 +12,14 @@ const Styled = styled.section`
   align-content: center;
   align-self: center;
   justify-self: stretch;
+  color: ${({ theme }) => theme.color2 };
+  background-color: ${({ theme }) => theme.background };
+  backdrop-filter: blur(1.25rem);
 
   hgroup {
     display: flex;
     flex-direction: column;
     gap: .5rem;
-
-  }
-
-  @media screen and ${breakpoints.desktop} {
 
   }
 
