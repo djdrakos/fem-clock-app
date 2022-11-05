@@ -13,24 +13,32 @@ const StyledApp = styled.div`
 
   
   @media screen and ${breakpoints.desktop} {
-    & > :nth-child(2):is(main) {
-      padding-block-end: 6.125rem;
-    }
-
-    & > :first-child {
+    figure {
       padding-block-start: 3.5em;
       align-self: flex-start;
+    }
+
+    & > :first-child:is(main) {
+      align-self: center;
+    }
+
+    & > :nth-child(2):is(main) {
+      padding-block-end: 6.125rem;
     }
   }
 
   @media screen and ${breakpoints.tabletLg} {
-    & > :nth-child(2):is(main) {
-    padding-block-end: 6.125rem;
-    }
-
-    & > :first-child {
+    figure {
       padding-block-start: 3.5em;
       align-self: flex-start;
+    }
+    
+    & > :first-child:is(main) {
+      align-self: center;
+    }
+    
+    & > :nth-child(2):is(main) {
+    padding-block-end: 6.125rem;
     }
   }
 
@@ -47,7 +55,7 @@ const StyledApp = styled.div`
     }
 
     .details {
-      max-height: 27.5rem;
+      height: 40vh;
     }
 }
 
@@ -60,10 +68,6 @@ const StyledApp = styled.div`
 
     main {
       padding-block-end: 2.5rem;
-    }
-
-    .details {
-      max-height: 23rem;
     }
   }
   

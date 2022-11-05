@@ -72,7 +72,6 @@ const Styled = styled.main`
   }
 
   @media screen and ${breakpoints.tabletSm} {
-    padding-block-end: 4rem;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
@@ -84,7 +83,6 @@ const Styled = styled.main`
   }
 
   @media screen and ${breakpoints.mobile} {
-    padding-block-end: 2.5rem;
     flex-direction: column;
     gap: 3rem;
 

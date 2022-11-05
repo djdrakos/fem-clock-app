@@ -100,6 +100,7 @@ const H6 = styled.h6`
   text-transform: uppercase;
   line-height: 1.75rem;
   letter-spacing: .1875rem;
+  white-space: nowrap;
 
   @media screen and ${breakpoints.tabletLg} {
     font-size: .8125rem;
