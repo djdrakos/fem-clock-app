@@ -10,9 +10,11 @@ const Styled = styled.main`
   display: flex;
   padding-block-end: 6.125rem;
 
-  p::after {
-      content: ", it\'s currently";
-    }
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
 
   button {
     --arrowBgSize: 2.5rem;
@@ -40,7 +42,18 @@ const Styled = styled.main`
     height: var(--arrowBgSize);
     width: var(--arrowBgSize);
   }
-}
+  }
+
+  .greeting {
+    display: grid;
+    grid-template-columns: 2.5rem auto auto;
+    align-items: center;
+    justify-content: start;
+    
+    ::after {
+      content: ", it\'s currently";
+    }
+  }
 
   @media screen and ${breakpoints.desktop} {
     flex-direction: row;
@@ -60,6 +73,10 @@ const Styled = styled.main`
     justify-content: flex-end;
     align-items: flex-start;
     gap: 5rem;
+
+    section {
+      gap: 0;
+    }
   }
 
   @media screen and ${breakpoints.mobile} {
@@ -67,7 +84,11 @@ const Styled = styled.main`
     flex-direction: column;
     gap: 3rem;
 
-    p::after {
+    section {
+      gap: 1rem;
+    }    
+
+    .greeting::after {
       content: none;
     }
 
@@ -87,13 +108,13 @@ export default function Main() {
   return (
     <Styled>
       <section>
-        <H4 as="p">
+        <H4 as="p" className="greeting">
           { true 
           ? <><IconSun /> Good Morning</> 
           : <><IconMoon />Good Evening</>}
         </H4> 
-        <H1 as="time">9:54<Timezone> PST</Timezone></H1>
-        <H3>in Portland, USA</H3>
+        <H1 as="time">9:54<Timezone>PST</Timezone></H1>
+        <H3 as="p">in Portland, USA</H3>
       </section>
 
       <button>

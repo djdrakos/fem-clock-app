@@ -7,27 +7,27 @@ const StyledFig = styled.figure`
   display: flex;
   width: 35.8125em;
 
-    @media screen and ${breakpoints.tabletSm} {
-      width: 100%;
-      max-width: 35.8125em;
-  }
-
-    @media screen and ${breakpoints.mobile} {
-      width: 100%;
-  }
-
   blockquote {
     ::before, ::after {
-      content: '"'
+      content: '"';
     }
   }
-
+  
   button {
     background: none;
     border-radius: 50%;
     padding: .66875rem;
     height: fit-content;
     width: fit-content;
+  }
+
+  @media screen and ${breakpoints.tabletSm} {
+    width: 100%;
+    max-width: 35.8125em;
+  }
+
+  @media screen and ${breakpoints.mobile} {
+    width: 100%;
   }
 `
 

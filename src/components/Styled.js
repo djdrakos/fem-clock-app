@@ -108,10 +108,10 @@ const P = styled.p`
 `
 
   const Timezone = styled.span`
+  padding-inline-start: .75rem;
   font-size: 2.5rem;
   font-weight: 400;  
   text-transform: uppercase;
-  letter-spacing: .25rem;
 
   @media screen and ${breakpoints.tabletLg} {
     font-size: 2rem;
