@@ -4,22 +4,25 @@ import breakpoints from '../../styles/breakpoints';
 const StyledApp = styled.div`
   height: 100%;
   display: grid;
-  grid-template-rows: repeat(2, minmax(fit-content, 50%));
+  grid-template-columns: minmax(4em, 1fr) minmax(42em, 73%) minmax(4em, 1fr);
+  grid-template-rows: repeat(2, 1fr);
 
   & > * {
     grid-column: 2;
   }
 
   & > :first-child {
-    padding-top: 3.5em;
+    padding-block-start: 3.5em;
+    align-self: flex-start;
   }
-
+  
   @media screen and ${breakpoints.desktop} {
-    grid-template-columns: minmax(4em, 1fr) minmax(42em, 73%) minmax(4em, 1fr);
+    & > :nth-child(2):is(main) {
+    padding-block-end: 6.125rem;
+    }
   }
 
   @media screen and ${breakpoints.tabletLg} {
-    grid-template-columns: minmax(4em, 1fr) minmax(42em, 73%) minmax(4em, 1fr);
   }
 
   @media screen and ${breakpoints.tabletSm} {

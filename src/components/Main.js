@@ -3,12 +3,11 @@ import { ReactComponent as IconArrowDown } from '../assets/desktop/icon-arrow-do
 import { ReactComponent as IconArrowUp } from '../assets/desktop/icon-arrow-up.svg'
 import { ReactComponent as IconSun } from '../assets/desktop/icon-sun.svg'
 import { ReactComponent as IconMoon } from '../assets/desktop/icon-moon.svg'
-import { H1, H2, H3, H4, H6, Timezone } from './Styled'
+import { H1, H3, H4, Timezone } from './Styled'
 import breakpoints from '../styles/breakpoints';
 
 const Styled = styled.main`
   display: flex;
-  padding-block-end: 6.125rem;
 
   section {
     display: flex;
@@ -21,7 +20,6 @@ const Styled = styled.main`
     display: grid;
     grid-template-columns: 1fr var(--arrowBgSize);
     justify-items: center;
-
     height: 3.5rem;
     width: 9.125rem;
     color: var(--grey-mid);
@@ -33,15 +31,21 @@ const Styled = styled.main`
     letter-spacing: .3125rem;
     padding: .5rem;
 
-  span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--black);
-    border-radius: 50%;
-    height: var(--arrowBgSize);
-    width: var(--arrowBgSize);
-  }
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--grey-dark);
+      border-radius: 50%;
+      height: var(--arrowBgSize);
+      width: var(--arrowBgSize);
+    }
+
+    :hover {
+      span {
+        background-color: var(--grey-light);
+      }
+    }
   }
 
   .greeting {
@@ -113,7 +117,7 @@ export default function Main() {
           ? <><IconSun /> Good Morning</> 
           : <><IconMoon />Good Evening</>}
         </H4> 
-        <H1 as="time">9:54<Timezone>PST</Timezone></H1>
+        <H1><time>9:54<Timezone>PST</Timezone></time></H1>
         <H3 as="p">in Portland, USA</H3>
       </section>
 
@@ -130,22 +134,6 @@ export default function Main() {
             </span>
           </> }
       </button>
-
-      { true ? '' :
-        <section>
-          <H6>Current timezone</H6>
-          <H2 as='p'>United States/Portland</H2>
-
-          <H6>Day of the year</H6>
-          <H2 as='p'>312</H2>
-
-          <H6>Day of the week</H6>
-          <H2 as='p'>Tuesday</H2>
-
-          <H6>Week number</H6>
-          <H2 as='p'>44</H2>
-        </section>
-      }
     </Styled> 
   )
 }
