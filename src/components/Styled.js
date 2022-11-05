@@ -12,6 +12,10 @@ const H1 = styled.h1`
     font-size: 10.9375rem;
   }
 
+  @media screen and ${breakpoints.tabletSm} {
+    font-size: 10.9375rem;
+  }
+
   @media screen and ${breakpoints.mobile} {
     font-size: 6.25rem;
   }
@@ -20,16 +24,19 @@ const H1 = styled.h1`
 const H2 = styled.h2`
   font-size: 3.5rem;
   font-weight: 700;
-  line-height: 4.25rem;
+  line-height: auto;
   text-transform: capitalize;
 
   @media screen and ${breakpoints.tabletLg} {
     font-size: 2.5rem;
-    line-height: 3rem;
+  }
+
+  @media screen and ${breakpoints.tabletSm} {
+    font-size: 2.5rem;
   }
 
   @media screen and ${breakpoints.mobile} {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 `
 
@@ -41,6 +48,10 @@ const H3 = styled.h3`
   letter-spacing: .3rem;
 
   @media screen and ${breakpoints.tabletLg} {
+    font-size: 1.125rem;
+  }
+
+  @media screen and ${breakpoints.tabletSm} {
     font-size: 1.125rem;
   }
 
@@ -57,6 +68,10 @@ const H4 = styled.h4`
   letter-spacing: .25rem;
 
   @media screen and ${breakpoints.tabletLg} {
+    font-size: 1.125rem;
+  }
+
+  @media screen and ${breakpoints.tabletSm} {
     font-size: 1.125rem;
   }
 
@@ -88,6 +103,12 @@ const H6 = styled.h6`
 
   @media screen and ${breakpoints.tabletLg} {
     font-size: .8125rem;
+    letter-spacing: .2rem;
+  }
+
+  @media screen and ${breakpoints.tabletSm} {
+    font-size: .8125rem;
+    letter-spacing: .2rem;
   }
 
   @media screen and ${breakpoints.mobile} {
@@ -114,6 +135,10 @@ const P = styled.p`
   text-transform: uppercase;
 
   @media screen and ${breakpoints.tabletLg} {
+    font-size: 2rem;
+  }
+
+  @media screen and ${breakpoints.tabletSm} {
     font-size: 2rem;
   }
 
