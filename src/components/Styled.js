@@ -8,7 +8,7 @@ const H1 = styled.h1`
   letter-spacing: -.025rem;
   text-transform: capitalize;
 
-  @media screen and ${breakpoints.tablet} {
+  @media screen and ${breakpoints.tabletLg} {
     font-size: 10.9375rem;
   }
 
@@ -23,7 +23,7 @@ const H2 = styled.h2`
   line-height: 4.25rem;
   text-transform: capitalize;
 
-  @media screen and ${breakpoints.tablet} {
+  @media screen and ${breakpoints.tabletLg} {
     font-size: 2.5rem;
     line-height: 3rem;
   }
@@ -40,7 +40,7 @@ const H3 = styled.h3`
   text-transform: uppercase;
   letter-spacing: .3rem;
 
-  @media screen and ${breakpoints.tablet} {
+  @media screen and ${breakpoints.tabletLg} {
     font-size: 1.125rem;
   }
 
@@ -56,7 +56,7 @@ const H4 = styled.h4`
   text-transform: uppercase;
   letter-spacing: .25rem;
 
-  @media screen and ${breakpoints.tablet} {
+  @media screen and ${breakpoints.tabletLg} {
     font-size: 1.125rem;
   }
 
@@ -86,7 +86,7 @@ const H6 = styled.h6`
   line-height: 1.75rem;
   letter-spacing: .1875rem;
 
-  @media screen and ${breakpoints.tablet} {
+  @media screen and ${breakpoints.tabletLg} {
     font-size: .8125rem;
   }
 
@@ -113,7 +113,7 @@ const P = styled.p`
   text-transform: uppercase;
   letter-spacing: .25rem;
 
-  @media screen and ${breakpoints.tablet} {
+  @media screen and ${breakpoints.tabletLg} {
     font-size: 2rem;
   }
 

@@ -8,8 +8,7 @@ import breakpoints from '../styles/breakpoints';
 
 const Styled = styled.main`
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  padding-block-end: 6.125rem;
 
   p::after {
       content: ", it\'s currently";
@@ -43,12 +42,30 @@ const Styled = styled.main`
   }
 }
 
-  @media screen and ${breakpoints.tablet} {
-    gap: 0;
+  @media screen and ${breakpoints.desktop} {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  @media screen and ${breakpoints.tabletLg} {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  @media screen and ${breakpoints.tabletSm} {
+    padding-block-end: 4rem;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 5rem;
   }
 
   @media screen and ${breakpoints.mobile} {
-    gap: 1rem;
+    padding-block-end: 2.5rem;
+    flex-direction: column;
+    gap: 3rem;
 
     p::after {
       content: none;
@@ -62,8 +79,6 @@ const Styled = styled.main`
       letter-spacing: .234rem;
       line-height: .875rem;
       padding: .25rem;
-
-      span {}
     } 
   }
 `
@@ -71,14 +86,15 @@ const Styled = styled.main`
 export default function Main() {
   return (
     <Styled>
-      <H4 as="p">
-        { true 
-        ? <><IconSun /> Good Morning</> 
-        : <><IconMoon />Good Evening</>}
-      </H4> 
-      <H1 as="time">9:54<Timezone> PST</Timezone></H1>
-
-      <H3>in Portland, USA</H3>
+      <section>
+        <H4 as="p">
+          { true 
+          ? <><IconSun /> Good Morning</> 
+          : <><IconMoon />Good Evening</>}
+        </H4> 
+        <H1 as="time">9:54<Timezone> PST</Timezone></H1>
+        <H3>in Portland, USA</H3>
+      </section>
 
       <button>
         { true 
@@ -109,7 +125,6 @@ export default function Main() {
           <H2 as='p'>44</H2>
         </section>
       }
-
     </Styled> 
   )
 }

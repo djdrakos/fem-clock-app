@@ -7,7 +7,7 @@ const StyledFig = styled.figure`
   display: flex;
   width: 35.8125em;
 
-    @media screen and ${breakpoints.tablet} {
+    @media screen and ${breakpoints.tabletSm} {
       width: 100%;
       max-width: 35.8125em;
   }

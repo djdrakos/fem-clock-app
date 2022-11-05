@@ -4,7 +4,7 @@ import breakpoints from '../../styles/breakpoints';
 const StyledApp = styled.div`
   height: 100%;
   display: grid;
-  grid-template-rows: repeat(2, 50%);
+  grid-template-rows: repeat(2, minmax(fit-content, 50%));
 
   & > * {
     grid-column: 2;
@@ -22,7 +22,11 @@ const StyledApp = styled.div`
       grid-template-columns: minmax(4em, 1fr) minmax(42em, 73%) minmax(4em, 1fr);
   }
 
-  @media screen and ${breakpoints.tablet} {
+  @media screen and ${breakpoints.tabletLg} {
+    grid-template-columns: minmax(4em, 1fr) minmax(42em, 73%) minmax(4em, 1fr);
+  }
+
+  @media screen and ${breakpoints.tabletSm} {
     grid-template-columns: minmax(3em, 1fr) clamp(32em, 83.33%, 42.875em) minmax(3em, 1fr);
   }
 
