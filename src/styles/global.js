@@ -38,6 +38,7 @@ body {
 
 #root {
   margin: 0 auto;
+  overflow: scroll;
 }
 
 img, picture {
