@@ -2,13 +2,11 @@ import styled from 'styled-components';
 import { H5, P } from './Styled';
 import { ReactComponent as IconRefresh } from '../assets/desktop/icon-refresh.svg'
 import breakpoints from '../styles/breakpoints';
+import GridContainer from './GridContainer';
+import GridItem from './GridItem';
 
 const StyledFig = styled.figure`
   display: flex;
-  grid-area: auto / span 9;
-
-  .wrapper {
-  }
   
   blockquote {
     ::before, ::after {
@@ -25,33 +23,33 @@ const StyledFig = styled.figure`
   }
 
   @media screen and ${breakpoints.tabletSm} {
-    grid-area: auto / span 11;
-    .wrapper {
-    }
+
   }
 
   @media screen and ${breakpoints.tabletSm} {
-    grid-area: auto / span 12;
-    .wrapper {
-    }
+
   } 
 `
 
 export default function Quote() {
   return (
       <StyledFig className='quote'>
-        <div className="wrapper">
-          <P as="blockquote">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta et diam in vestibulum. Aliquam nunc enim, condimentum in volutpat viverra, ultricies non sem.
-          </P>
-          <H5 as="figcaption">
-            Phasellus eu Nisi Mauris
-          </H5>
-        </div>
+        <GridContainer>
+          <GridItem sm={12} m={11} l={9} xl={6}>
+          <div className="wrapper">
+            <P as="blockquote">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta et diam in vestibulum. Aliquam nunc enim, condimentum in volutpat viverra, ultricies non sem.
+            </P>
+            <H5 as="figcaption">
+              Phasellus eu Nisi Mauris
+            </H5>
+          </div>
 
-        <button>
-          <IconRefresh />
-        </button>
+          <button>
+            <IconRefresh />
+          </button>
+          </GridItem>
+        </GridContainer>
       </StyledFig>
   )
 }
