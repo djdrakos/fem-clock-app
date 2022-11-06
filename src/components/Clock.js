@@ -1,12 +1,13 @@
 import styled from 'styled-components'
+import GridContainer from './GridContainer'
+import GridItem from './GridItem'
 import ToggleDetails from './ToggleDetails'
 import { ReactComponent as IconSun } from '../assets/desktop/icon-sun.svg'
 import { ReactComponent as IconMoon } from '../assets/desktop/icon-moon.svg'
-import { H1, H3, H4, Timezone } from './Styled'
+import { H1, H3, H4, Timezone } from './Typography'
 import breakpoints from '../styles/breakpoints';
 
 const StyledMain = styled.main`
-  display: flex;
 
   section {
     display: flex;
@@ -64,16 +65,22 @@ const StyledMain = styled.main`
 export default function Clock({detailsIsOpen, toggleDetails}) {
   return (
       <StyledMain className="clock">
-        <section>
-          <H4 as="p" className="greeting">
-            { detailsIsOpen 
-            ? <><IconSun /> Good Morning</> 
-            : <><IconMoon />Good Evening</>}
-          </H4> 
-          <H1><time>9:54<Timezone>PST</Timezone></time></H1>
-          <H3 as="p">in Portland, USA</H3>
-        </section>
-        <ToggleDetails detailsIsOpen={detailsIsOpen} toggleDetails={toggleDetails}/>
+        <GridContainer >
+          <GridItem>
+            <section>
+              <div className="wrapper">
+                <H4 as="p" className="greeting">
+                  { detailsIsOpen 
+                  ? <><IconSun /> Good Morning</> 
+                  : <><IconMoon />Good Evening</>}
+                </H4> 
+                <H1><time>9:54<Timezone>PST</Timezone></time></H1>
+                <H3 as="p">in Portland, USA</H3>
+                </div>
+            <ToggleDetails detailsIsOpen={detailsIsOpen} toggleDetails={toggleDetails}/>
+            </section>
+          </GridItem>
+        </GridContainer>
       </StyledMain> 
   )
 }

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { H2, H6 } from './Styled'
+import { H2, H6 } from './Typography'
 import breakpoints from '../styles/breakpoints';
 
 const Styled = styled.section`

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { H5, P } from './Styled';
+import { H5, P } from './Typography';
 import { ReactComponent as IconRefresh } from '../assets/desktop/icon-refresh.svg'
 import breakpoints from '../styles/breakpoints';
 import GridContainer from './GridContainer';
@@ -7,7 +7,7 @@ import GridItem from './GridItem';
 
 const StyledFig = styled.figure`
   display: flex;
-  
+
   blockquote {
     ::before, ::after {
       content: '"';
@@ -36,18 +36,18 @@ export default function Quote() {
       <StyledFig className='quote'>
         <GridContainer>
           <GridItem sm={12} m={11} l={9} xl={6}>
-          <div className="wrapper">
-            <P as="blockquote">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta et diam in vestibulum. Aliquam nunc enim, condimentum in volutpat viverra, ultricies non sem.
-            </P>
-            <H5 as="figcaption">
-              Phasellus eu Nisi Mauris
-            </H5>
-          </div>
+            <div className="wrapper">
+              <P as="blockquote">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta et diam in vestibulum. Aliquam nunc enim, condimentum in volutpat viverra, ultricies non sem.
+              </P>
+              <H5 as="figcaption">
+                Phasellus eu Nisi Mauris
+              </H5>
+            </div>
 
-          <button>
-            <IconRefresh />
-          </button>
+            <button>
+              <IconRefresh />
+            </button>
           </GridItem>
         </GridContainer>
       </StyledFig>
