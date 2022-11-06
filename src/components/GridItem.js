@@ -29,38 +29,54 @@ const StyledDiv = styled.div`
 
 export default function GridItem({children, s, m, l, xl, ...props}) {
 
-const sizeProps = { s, m, l, xl }
+const sizePropsArray = [ 
+    { s }, 
+    { m }, 
+    { l }, 
+    { xl } 
+  ]
 
 const createGridOptions = (sizeProps) => {
-  const sizeArray = Object.keys(sizeProps);
+  return sizeProps.reduce((options, currentSize, i) => {
+    const [[ sizeName, sizeValue ]] = Object.entries(currentSize)
+    console.log('name', sizeName, 'value', sizeValue)
+    if(sizeValue === undefined){
+      options[sizeName] = options.default
+    }
 
-  return sizeArray.reduce((options, currentSize, i, sizeArray) => {
-    if(sizeProps[currentSize] === undefined){
-      options[currentSize] = { 
-        colStart: 1, 
-        colSpan: 'span 12'
-      }
-    }
-    if(typeof sizeProps[currentSize] === 'number') {
-      options[currentSize] = { 
+    if(typeof sizeValue === 'number') {
+      options[sizeName] = { 
         colStart: 'auto', 
-        colSpan: `span ${sizeProps[currentSize]}`
+        colSpan: `span ${sizeValue}`
       }
-    }  
-    if(Array.isArray(sizeProps[currentSize])) {
-      options[currentSize] = { 
-        colStart: sizeProps[currentSize][0], 
-        colSpan: `span ${sizeProps[currentSize][1]}`
+      options.default = { 
+        colStart: 'auto', 
+        colSpan: `span ${sizeValue}`
       }
     }
-    console.log(options)
+
+    if(Array.isArray(sizeValue)) {
+      options[sizeName] = { 
+        colStart: sizeValue[0], 
+        colSpan: `span ${sizeValue[1]}`
+      }
+      options.default = { 
+        colStart: sizeValue[0], 
+        colSpan: `span ${sizeValue[1]}`
+      }
+    }
+
     return options
-  }, {})
+  }, { default: {
+    colStart: 1, 
+    colSpan: 'span 12'
+    }
+  })
 }
   
 
 return (
-  <StyledDiv options={createGridOptions(sizeProps)} {...props}>
+  <StyledDiv options={createGridOptions(sizePropsArray)} {...props}>
       {children}
     </StyledDiv>
   )
