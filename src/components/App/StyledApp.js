@@ -1,75 +1,57 @@
-import styled from 'styled-components';
-import breakpoints from '../../styles/breakpoints';
+import styled from 'styled-components'
+import breakpoints from '../../styles/breakpoints'
 
 const StyledApp = styled.div`
+  z-index: 1;
+  position: relative;
   height: 100%;
-  display: grid;
-  grid-template-columns: minmax(4em, 1fr) minmax(42em, 73%) minmax(4em, 1fr);
-  grid-template-rows: repeat(2, 50%);
+  display: flex;
+  flex-direction: column;
 
-  & > * {
-    grid-column: 2;
+  .quote {
+    flex: 0 0 50vh;
+    padding-block-start: 3.5em;
+    background-color: hsla(0, 0%, 0%, .4);
   }
-
   
-  @media screen and ${breakpoints.desktop} {
-    figure {
-      padding-block-start: 3.5em;
-      align-self: flex-start;
-    }
-
-    & > :first-child:is(main) {
-      align-self: center;
-    }
-
-    & > :nth-child(2):is(main) {
-      padding-block-end: 6.125rem;
-    }
+  .clock { 
+    flex: 1 0 0;
+    padding-block-end: 6.125rem;
+    background-color: hsla(0, 0%, 0%, .4);
   }
 
-  @media screen and ${breakpoints.tabletLg} {
-    figure {
-      padding-block-start: 3.5em;
-      align-self: flex-start;
-    }
-    
-    & > :first-child:is(main) {
-      align-self: center;
-    }
-    
-    & > :nth-child(2):is(main) {
-    padding-block-end: 6.125rem;
-    }
+  .details { 
+    flex: 0 0 50vh;
   }
 
   @media screen and ${breakpoints.tabletSm} {
-    grid-template-columns: minmax(3em, 1fr) clamp(32em, 83.33%, 42.875em) minmax(3em, 1fr);
-    grid-template-rows: 1fr auto;
-
-    figure {
+    .quote {
       padding-block-start: 5em;
-    }
+    } 
 
-    main {
+    .clock {
       padding-block-end: 4rem;
+    }
+    
+    .details {
+      height: 42vh;
+    }
+  }
+
+  @media screen and ${breakpoints.mobile} {
+
+    .quote {
+      padding-block-start: 2em;
+    } 
+      
+    .clock {
+      padding-block-end: 2.5rem;
     }
 
     .details {
-      height: 40vh;
+      height: 38vh;
     }
-}
-
-  @media screen and ${breakpoints.mobile} {
-      grid-template-columns: minmax(1.625em, 1fr) minmax(19em, 32em) minmax(1.625em, 1fr);
-
-    figure {
-      padding-block-start: 2em;
-    }
-
-    main {
-      padding-block-end: 2.5rem;
-    }
-  }
+  }  
   
   `
 
