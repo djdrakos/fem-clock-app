@@ -74,4 +74,9 @@ button {
   align-content: center;
   align-items: center;
 }
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+  }
 `
