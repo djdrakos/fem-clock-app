@@ -8,7 +8,7 @@ import bgSmDay from '../assets/mobile/bg-image-daytime.jpg'
 import bgSmNight from '../assets/mobile/bg-image-nighttime.jpg'
 
 
-const Styled = styled.div`
+const Background = styled.div`
   --bgImgDay: url(${bgLgDay});
   --bgImgNight: url(${bgLgNight});
   z-index: 0;
@@ -17,11 +17,9 @@ const Styled = styled.div`
   width: 100%;
   background-color: #FFFFFF;
   background-image: ${({ theme }) => theme.type === 'day' ? 'var(--bgImgDay)' : 'var(--bgImgNight)'};
-  backdrop-filter: blur(1.25rem);  
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
-  /* opacity: .5; */
 
 
   @media screen and ${breakpoints.tabletSm} {
@@ -34,10 +32,4 @@ const Styled = styled.div`
 }
 `
 
-export default function Background() {
-  return (
-    <Styled>
-    
-    </Styled>
-    )
-}
+export default Background
