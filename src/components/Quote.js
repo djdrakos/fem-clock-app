@@ -6,7 +6,9 @@ import GridContainer from './GridContainer';
 import GridItem from './GridItem';
 
 const StyledFig = styled.figure`
-  display: flex;
+  .flex-row {
+    gap: 1rem;
+  }
 
   blockquote {
     ::before, ::after {
@@ -17,9 +19,9 @@ const StyledFig = styled.figure`
   button {
     background: none;
     border-radius: 50%;
-    padding: .66875rem;
-    height: fit-content;
-    width: fit-content;
+    height: 2.5rem;
+    width: 2.5rem;
+    justify-content: center;
   }
 
   @media screen and ${breakpoints.tabletSm} {
@@ -35,7 +37,7 @@ export default function Quote() {
   return (
       <StyledFig className='quote'>
         <GridContainer>
-          <GridItem sm={12} m={11} l={9} xl={6}>
+          <GridItem sm={12} m={11} l={7} xl={6} className='flex-row'>
             <div className="wrapper">
               <P as="blockquote">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta et diam in vestibulum. Aliquam nunc enim, condimentum in volutpat viverra, ultricies non sem.
