@@ -6,8 +6,6 @@ const GridContainer = styled.div`
   grid-template-columns: repeat(12, minmax(4rem, 1fr));
   padding-inline: max(10rem, 12vw);
   gap: 1.875rem;
-  margin: 0 auto;
-  background-color: hsla(0, 0%, 0%, .4);
 
   @media screen and ${breakpoints.tabletLg} {
     grid-template-columns: repeat(12, minmax(3.125rem, 1fr));
