@@ -8,10 +8,15 @@ import { H1, H3, H4, Timezone } from './Typography'
 import breakpoints from '../styles/breakpoints';
 
 const StyledMain = styled.main`
+  display: flex;
+  flex-direction: column; 
+  justify-content: flex-end;
 
   section {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
     gap: 1rem;
   }
 
@@ -26,34 +31,18 @@ const StyledMain = styled.main`
     }
   }
 
-  @media screen and ${breakpoints.desktop} {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-
-  @media screen and ${breakpoints.tabletLg} {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-
   @media screen and ${breakpoints.tabletSm} {
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
-    gap: 5rem;
-
     section {
-      gap: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      gap: 5rem;
     }
   }
 
   @media screen and ${breakpoints.mobile} {
-    gap: 3rem;
-
     section {
-      gap: 1rem;
+      gap: 3rem;
     }    
 
     .greeting::after {
