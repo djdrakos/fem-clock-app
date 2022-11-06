@@ -3,15 +3,11 @@ import { H2, H6 } from './Styled'
 import breakpoints from '../styles/breakpoints';
 
 const Styled = styled.section`
-height: 100%;
   display: grid;
-  grid-template-rows: auto auto;
-  grid-template-columns: 68% 29%;
-  column-gap: 3%;
+  grid-template-columns: calc((7/12 * 100%) - 2rem) calc(5/12 * 100%);
+  column-gap: 2rem;
   row-gap: 2.625rem;
   align-content: center;
-  align-self: center;
-  justify-self: stretch;
   color: ${({ theme }) => theme.color2 };
   background-color: ${({ theme }) => theme.background };
   backdrop-filter: blur(1.25rem);
@@ -24,8 +20,8 @@ height: 100%;
   }
 
   @media screen and ${breakpoints.tabletSm} {
-    grid-template-columns: 55% 40%;
-    column-gap: 5%;
+    grid-template-columns: .6fr .4fr;
+    column-gap: 2rem;
     row-gap: 3rem;
 
     hgroup {
@@ -44,35 +40,33 @@ height: 100%;
       justify-content: space-between;
       align-items: center;
 
-      p {
-        text-align: end;
-      }
+      p { text-align: end; }
     }
   }
 `
 
 export default function Details() {
 return (
-  <Styled className="details">
-    <hgroup>
-      <H6 as='h2'>Current timezone</H6>
-      <H2 as='p'>United States<wbr />/Portland</H2>
-    </hgroup>
-    
-    <hgroup>
-      <H6 as='h2'>Day of the year</H6>
-      <H2 as='p'>312</H2>
-    </hgroup>
-    
-    <hgroup>
-      <H6 as='h2'>Day of the week</H6>
-      <H2 as='p'>Tuesday</H2>
-    </hgroup>
-    
-    <hgroup>
-      <H6 as='h2'>Week number</H6>
-      <H2 as='p'>44</H2>
-    </hgroup>
-  </Styled>
+    <Styled className="details">
+      <hgroup>
+        <H6 as='h2'>Current timezone</H6>
+        <H2 as='p'>United States<wbr />/Portland</H2>
+      </hgroup>
+      
+      <hgroup>
+        <H6 as='h2'>Day of the year</H6>
+        <H2 as='p'>312</H2>
+      </hgroup>
+      
+      <hgroup>
+        <H6 as='h2'>Day of the week</H6>
+        <H2 as='p'>Tuesday</H2>
+      </hgroup>
+      
+      <hgroup>
+        <H6 as='h2'>Week number</H6>
+        <H2 as='p'>44</H2>
+      </hgroup>
+    </Styled>
 )
 }
