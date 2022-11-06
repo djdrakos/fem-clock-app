@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import GridContainer from './GridContainer'
+import GridItem from './GridItem'
 import { H2, H6 } from './Typography'
 import breakpoints from '../styles/breakpoints';
 
@@ -48,25 +50,31 @@ const Styled = styled.section`
 export default function Details() {
 return (
     <Styled className="details">
-      <hgroup>
-        <H6 as='h2'>Current timezone</H6>
-        <H2 as='p'>United States<wbr />/Portland</H2>
-      </hgroup>
-      
-      <hgroup>
-        <H6 as='h2'>Day of the year</H6>
-        <H2 as='p'>312</H2>
-      </hgroup>
-      
-      <hgroup>
-        <H6 as='h2'>Day of the week</H6>
-        <H2 as='p'>Tuesday</H2>
-      </hgroup>
-      
-      <hgroup>
-        <H6 as='h2'>Week number</H6>
-        <H2 as='p'>44</H2>
-      </hgroup>
+      <GridContainer>
+        <GridItem m={7}>
+          <hgroup>
+            <H6 as='h2'>Current timezone</H6>
+            <H2 as='p'>United States<wbr />/Portland</H2>
+          </hgroup>
+          
+          <hgroup>
+            <H6 as='h2'>Day of the year</H6>
+            <H2 as='p'>312</H2>
+          </hgroup>
+        </GridItem>
+          
+        <GridItem m={5}>
+          <hgroup>
+            <H6 as='h2'>Day of the week</H6>
+            <H2 as='p'>Tuesday</H2>
+          </hgroup>
+          
+          <hgroup>
+            <H6 as='h2'>Week number</H6>
+            <H2 as='p'>44</H2>
+          </hgroup>
+        </GridItem>
+      </GridContainer>
     </Styled>
 )
 }
