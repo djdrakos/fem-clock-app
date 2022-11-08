@@ -75,8 +75,8 @@ button {
   align-items: center;
 }
 
-.flex-row {
+.flex {
     display: flex;
-    flex-direction: row;
   }
+
 `

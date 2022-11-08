@@ -6,7 +6,8 @@ import GridContainer from './GridContainer';
 import GridItem from './GridItem';
 
 const StyledFig = styled.figure`
-  .flex-row {
+  .flex {
+    flex-direction: row;
     gap: 1rem;
   }
 
@@ -37,7 +38,7 @@ export default function Quote() {
   return (
       <StyledFig className='quote'>
         <GridContainer>
-          <GridItem s={12} m={11} l={7} xl={6} className='flex-row'>
+          <GridItem s={12} m={11} l={7} xl={6} className='flex'>
             <div className="wrapper">
               <P as="blockquote">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta et diam in vestibulum. Aliquam nunc enim, condimentum in volutpat viverra, ultricies non sem.

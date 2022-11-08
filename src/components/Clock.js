@@ -54,7 +54,7 @@ const StyledMain = styled.main`
 export default function Clock({detailsIsOpen, toggleDetails}) {
   return (
       <StyledMain className="clock">
-        <GridContainer >
+        <GridContainer>
           <GridItem>
             <section>
               <div className="wrapper">
@@ -65,7 +65,7 @@ export default function Clock({detailsIsOpen, toggleDetails}) {
                 </H4> 
                 <H1><time>9:54<Timezone>PST</Timezone></time></H1>
                 <H3 as="p">in Portland, USA</H3>
-                </div>
+              </div>
             <ToggleDetails detailsIsOpen={detailsIsOpen} toggleDetails={toggleDetails}/>
             </section>
           </GridItem>

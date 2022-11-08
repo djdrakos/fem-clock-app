@@ -5,11 +5,9 @@ import { H2, H6 } from './Typography'
 import breakpoints from '../styles/breakpoints';
 
 const Styled = styled.section`
-  display: grid;
-  grid-template-columns: calc((7/12 * 100%) - 2rem) calc(5/12 * 100%);
-  column-gap: 2rem;
-  row-gap: 2.625rem;
-  align-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   color: ${({ theme }) => theme.color2 };
   background-color: ${({ theme }) => theme.background };
   backdrop-filter: blur(1.25rem);
@@ -17,41 +15,52 @@ const Styled = styled.section`
   hgroup {
     display: flex;
     flex-direction: column;
-    gap: .5rem;
-
+    column-gap: .5rem;
+    
+    &:first-of-type {
+      margin-block-end: 2.625rem;
+    }
   }
-
+  
+  .flex {
+    flex-direction: column;
+    justify-content: space-between;
+    
+  }
+  
   @media screen and ${breakpoints.tabletSm} {
-    grid-template-columns: .6fr .4fr;
-    column-gap: 2rem;
-    row-gap: 3rem;
-
     hgroup {
-      gap: 0;
+      column-gap: 0;
+      
+      &:first-of-type {
+          margin-block-end: 3rem;
+      }
     }
   }
 
   @media screen and ${breakpoints.mobile} {
-    grid-template-rows: repeat(4, auto);
-    grid-template-columns: 1fr;
-    column-gap: 0;
-    row-gap: 1rem;
-
     hgroup {
+      &:first-of-type {
+      margin-block-end: .5rem;
+      }
+
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-
+      margin-block: .5rem;
+      
       p { text-align: end; }
+
     }
+
   }
 `
 
 export default function Details() {
 return (
     <Styled className="details">
-      <GridContainer>
-        <GridItem m={7}>
+      <GridContainer alignContent="center">
+        <GridItem m={7} className="flex">
           <hgroup>
             <H6 as='h2'>Current timezone</H6>
             <H2 as='p'>United States<wbr />/Portland</H2>
@@ -63,7 +72,7 @@ return (
           </hgroup>
         </GridItem>
           
-        <GridItem m={5}>
+        <GridItem m={5} className="flex">
           <hgroup>
             <H6 as='h2'>Day of the week</H6>
             <H2 as='p'>Tuesday</H2>

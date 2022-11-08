@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import breakpoints from '../styles/breakpoints';
 
-const StyledDiv = styled.div`
+const StyledDiv = styled.div.attrs( props => ({ style:  props }))`
   ${ ({ options }) => options && css`
     @media screen and ${breakpoints.desktop} {
       grid-column:  ${options.xl.colStart} / ${options.xl.colSpan};
@@ -39,7 +39,7 @@ const sizePropsArray = [
 const createGridOptions = (sizeProps) => {
   return sizeProps.reduce((options, currentSize, i) => {
     const [[ sizeName, sizeValue ]] = Object.entries(currentSize)
-    console.log('name', sizeName, 'value', sizeValue)
+
     if(sizeValue === undefined){
       options[sizeName] = options.default
     }
