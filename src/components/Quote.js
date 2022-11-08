@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { ReactComponent as IconRefresh } from '../assets/desktop/icon-refresh.svg'
 import GridContainer from './GridContainer';
 import GridItem from './GridItem';
 import { H5, P } from './Typography';
+import { fetchRandomQuote } from '../utils/fetchUtils'
 
 const StyledFig = styled.figure`
   .flex {
@@ -32,19 +33,19 @@ const StyledFig = styled.figure`
 
 export default function Quote() {
   const [ quote, setQuote ] = useState(null);
+
+  const getNewQuote = useCallback(() => {
+    setQuote(null)
+    fetchRandomQuote()
+      .then((quote) => setQuote(quote))
+  }, [])
+  
   
   useEffect(() => {
-    const fetchQuote = async () => {
-      const res = await fetch("https://programming-quotes-api.herokuapp.com/Quotes/random");
-      const quote = await res.json()
-      setQuote(quote)
-    }
-    fetchQuote()
-  }, [])
+    getNewQuote()
+    
+  }, [getNewQuote])
 
-  const handleRefreshQuote = () => {
-
-  }
 
   return (
       <StyledFig className='quote'>
@@ -65,7 +66,7 @@ export default function Quote() {
               }
             </div>
 
-            <button onClick={handleRefreshQuote}>
+            <button onClick={getNewQuote}>
               <IconRefresh />
             </button>
           </GridItem>
