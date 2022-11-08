@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { H5, P } from './Typography';
 import { ReactComponent as IconRefresh } from '../assets/desktop/icon-refresh.svg'
-import breakpoints from '../styles/breakpoints';
 import GridContainer from './GridContainer';
 import GridItem from './GridItem';
 
@@ -25,13 +24,9 @@ const StyledFig = styled.figure`
     justify-content: center;
   }
 
-  @media screen and ${breakpoints.tabletSm} {
-
+  button:hover, button:focus {
+    path { opacity: 1; }
   }
-
-  @media screen and ${breakpoints.tabletSm} {
-
-  } 
 `
 
 export default function Quote() {
