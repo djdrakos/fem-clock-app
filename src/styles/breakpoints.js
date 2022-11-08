@@ -1,8 +1,8 @@
 const breakpoints = {
-  mobile: '(max-width: 37.5em)',
-  tabletSm: '(max-width: 56.25em)',
-  tabletLg: '(min-width: 56.251em) and (max-width: 74.9em)',
-  desktop: '(min-width: 75em)',
+  mobile: '(max-width: 40em)',
+  tabletSm: '(max-width: 60em)',
+  tabletLg: '(min-width: 60.01em) and (max-width: 75em)',
+  desktop: '(min-width: 75.01em)',
 }
 
 export default breakpoints

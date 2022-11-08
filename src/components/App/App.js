@@ -1,16 +1,22 @@
-import Main from '../Main';
+import { useState } from 'react';
+import Clock from '../Clock';
 import Details from '../Details';
 import StyledApp from './StyledApp'
-import Quotation from '../Quotation'
+import Quote from '../Quote'
 
 function App() {
-  const drawerIsOpen = true;
+  const [detailsIsOpen, setDetailsIsOpen] = useState(false);
+
+  const toggleDetails = () => {
+    setDetailsIsOpen(state => !state);
+  }
+  
   return (
     <StyledApp>
-      { drawerIsOpen || <Quotation /> }
-      <Main />
-      { drawerIsOpen && <Details /> } 
-      </StyledApp>
+      { detailsIsOpen || <Quote /> }
+      <Clock detailsIsOpen={detailsIsOpen} toggleDetails={toggleDetails}/>
+      { detailsIsOpen && <Details /> } 
+    </StyledApp>
   );
 }
 

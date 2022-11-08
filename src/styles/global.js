@@ -38,6 +38,7 @@ body {
 
 #root {
   margin: 0 auto;
+  overflow: scroll;
 }
 
 img, picture {
@@ -73,4 +74,9 @@ button {
   align-content: center;
   align-items: center;
 }
+
+.flex {
+    display: flex;
+  }
+
 `
