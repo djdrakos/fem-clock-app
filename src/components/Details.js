@@ -15,7 +15,6 @@ const Styled = styled.section`
   hgroup {
     display: flex;
     flex-direction: column;
-    column-gap: .5rem;
     
     &:first-of-type {
       margin-block-end: 2.625rem;
@@ -27,14 +26,19 @@ const Styled = styled.section`
     justify-content: space-between;
     
   }
-  
+
+  .separator {
+    border-inline-start: 1px ${({ theme }) => theme.color2} solid;
+    opacity: .25;
+  }
+
   @media screen and ${breakpoints.tabletSm} {
-    hgroup {
-      column-gap: 0;
-      
-      &:first-of-type {
-          margin-block-end: 3rem;
-      }
+    hgroup:first-of-type {
+      margin-block-end: 3rem;
+    }
+
+    .separator {
+      border-inline-start:none;
     }
   }
 
@@ -60,7 +64,7 @@ export default function Details() {
 return (
     <Styled className="details">
       <GridContainer alignContent="center">
-        <GridItem m={7} className="flex">
+        <GridItem m={6} className="flex">
           <hgroup>
             <H6 as='h2'>Current timezone</H6>
             <H2 as='p'>United States<wbr />/Portland</H2>
@@ -71,6 +75,8 @@ return (
             <H2 as='p'>312</H2>
           </hgroup>
         </GridItem>
+
+        <GridItem m={1} className="separator"></GridItem>
           
         <GridItem m={5} className="flex">
           <hgroup>
