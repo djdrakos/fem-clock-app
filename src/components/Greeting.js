@@ -22,28 +22,23 @@ const StyledGreeting = styled(H4)`
 `
 
 export default function Greeting({currentTime}) {
+  const [hour] = currentTime.split(':')
 
-  // >= 5 && < 12 = "Good Morning"
-  // >= 12 && < 18 = "Good Afternoon"
-  // >= 18 || < 5 = "Good Evening"
+  const renderIcon = (hour) => {
+    if(hour >= 5 && hour < 18) return <IconSun /> 
+    if(hour >= 18 || hour < 5 ) return <IconMoon />
+  }
 
+  const renderGreeting = (hour) => {
+    if(hour >= 5 && hour < 12) return "Good Morning"
+    if(hour >= 12 && hour < 18 ) return "Good Afternoon"
+    if(hour >= 18 || hour < 5) return "Good Evening"
+  }
 
-//   - "Good morning" between 5am and 12pm
-//   - "Good afternoon" between 12pm and 6pm
-//   - "Good evening" between 6pm and 5am
-
-// >= 5 && < 18 = Sun
-// >= 18 || < 5 = Moon
-
-// - Change the greeting icon and background image depending on the time of day. They should show:
-//   - The sun icon and the daytime background image between 5am and 6pm
-//   - The moon icon and the nighttime background image between 6pm and 5am
   return (
     <StyledGreeting as='p'>
-      { currentTime 
-        ? <><IconSun /> Good Morning</> 
-        : <><IconMoon />Good Evening</>
-      }
+      {renderIcon(hour)}
+      {renderGreeting(hour)}
     </StyledGreeting>
   )
 }

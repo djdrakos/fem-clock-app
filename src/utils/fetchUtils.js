@@ -16,7 +16,7 @@ export const fetchCurrentTimeData = async () => {
   const timeData = {
     dayOfWeek: formatDayOfWeek(body.day_of_week),
     dayofYear: body.day_of_year,
-    startTime: body.unixtime,
+    startTime: new Date(body.datetime).getTime(),
     timezone: formatTimezoneLocation(body.timezone),
     timezoneAbbr: body.abbreviation,
     week: body.week_number,
