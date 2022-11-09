@@ -4,6 +4,7 @@ import Details from '../Details';
 import StyledApp from './StyledApp'
 import Quote from '../Quote'
 import { fetchCurrentTimeData } from '../../utils/fetchUtils'
+import { formatHour, formatMinutes } from '../../utils/formatUtils'
 
 function App() {
   const [ detailsIsOpen, setDetailsIsOpen ] = useState(false);
@@ -30,7 +31,7 @@ function App() {
       const tick =  setInterval(() => {
         const timePassed = Date.now() - startTime
         const now = new Date(timeData.startTime + timePassed)
-        setCurrentTime(`${now.getHours()}:${now.getMinutes()}`)
+        setCurrentTime(`${formatHour(now.getHours())}:${now.getMinutes()}`)
       }, 1000)  
       
       return () => clearInterval(tick)
