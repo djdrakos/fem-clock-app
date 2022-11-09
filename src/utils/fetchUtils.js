@@ -1,3 +1,5 @@
+import { formatTimezoneLocation } from './formatUtils';
+
 export const fetchRandomQuote = async () => {
   const res = await fetch("https://programming-quotes-api.herokuapp.com/Quotes/random");
   const body = await res.json()
@@ -15,7 +17,7 @@ export const fetchCurrentTimeData = async () => {
     dayOfWeek: body.day_of_week,
     dayofYear: body.day_of_year,
     startTime: body.unixtime,
-    timezone: body.timezone,
+    timezone: formatTimezoneLocation(body.timezone),
     timezoneAbbr: body.abbreviation,
     week: body.week_number,
   }

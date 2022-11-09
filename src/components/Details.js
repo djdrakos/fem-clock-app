@@ -69,7 +69,10 @@ return (
         <GridItem m={6} className="flex">
           <hgroup>
             <H6 as='h2'>Current timezone</H6>
-            <H2 as='p'>{timezone}</H2>
+            <H2 as='p'>{timezone.country}/
+              <wbr/>
+              {timezone.city}
+            </H2>
           </hgroup>
           
           <hgroup>
