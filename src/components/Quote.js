@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { ReactComponent as IconRefresh } from '../assets/desktop/icon-refresh.svg'
 import GridContainer from './GridContainer';
 import GridItem from './GridItem';
@@ -9,7 +9,8 @@ import { fetchRandomQuote } from '../utils/fetchUtils'
 const StyledFig = styled.figure`
   .flex {
     flex-direction: row;
-    gap: 1rem;
+    gap: .5rem;
+    justify-content: space-between;
   }
 
   blockquote {
@@ -21,20 +22,33 @@ const StyledFig = styled.figure`
   button {
     background: none;
     border-radius: 50%;
-    height: 2.5rem;
-    width: 2.5rem;
+    height: fit-content;
+    width: fit-content;
+    padding: .5rem;
     justify-content: center;
-  }
+    will-change: transform;
 
-  button:hover, button:focus {
+    path {
+      -webkit-transition: opacity .25s ease-out;
+      -moz-transition: opacity .25s ease-out;
+      -o-transition: opacity .25s ease-out;
+      transition: opacity .25s ease-out;
+    }
+
+    &:hover, &:focus {
     path { opacity: 1; }
   }
 `
 
 export default function Quote() {
   const [ quote, setQuote ] = useState(null);
+  const refreshIcon = useRef(null)
 
   const getNewQuote = useCallback(() => {
+    refreshIcon.current.animate(
+      { transform: 'rotate(360deg)' },
+      { duration: 500 }
+    )
     setQuote(null)
     fetchRandomQuote()
       .then((quote) => setQuote(quote))
@@ -66,7 +80,7 @@ export default function Quote() {
               }
             </div>
 
-            <button onClick={getNewQuote}>
+            <button ref={refreshIcon} onClick={getNewQuote}>
               <IconRefresh />
             </button>
           </GridItem>

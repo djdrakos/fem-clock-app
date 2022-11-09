@@ -52,6 +52,12 @@ const StyledApp = styled.div`
       height: 38vh;
     }
   }  
+
+  @media (prefers-reduced-motion: reduce) {
+  button {
+    transition: none;
+  }
+}
   
   `
 
