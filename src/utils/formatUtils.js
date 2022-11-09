@@ -22,6 +22,6 @@ export function formatHour(number) {
 }
 
 export function formatMinutes(number) {
-  if(number.length === 1) return `0${number}`
+  if(number < 10) return `0${number}`
   else return number;
 }
