@@ -30,7 +30,7 @@ function App() {
       const tick =  setInterval(() => {
         const timePassed = Date.now() - startTime
         const now = new Date(timeData.startTime + timePassed)
-        setCurrentTime(`${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`)
+        setCurrentTime(`${now.getHours()}:${now.getMinutes()}`)
       }, 1000)  
       
       return () => clearInterval(tick)
