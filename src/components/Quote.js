@@ -1,12 +1,13 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
+import * as AccessibleIcon from '@radix-ui/react-accessible-icon'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { ReactComponent as IconRefresh } from '../assets/desktop/icon-refresh.svg'
+import { ReactComponent as RefreshIcon } from '../assets/desktop/icon-refresh.svg'
 import GridContainer from './GridContainer';
 import GridItem from './GridItem';
 import { H5, P } from './Typography';
 import { fetchRandomQuote } from '../utils/fetchUtils'
 
-const StyledFig = styled.figure`
+const StyledFigure = styled.figure`
   .flex {
     flex-direction: row;
     gap: .5rem;
@@ -37,6 +38,7 @@ const StyledFig = styled.figure`
 
     &:hover, &:focus {
     path { opacity: 1; }
+    }
   }
 `
 
@@ -62,7 +64,7 @@ export default function Quote() {
 
 
   return (
-      <StyledFig className='quote'>
+      <StyledFigure className='quote'>
         <GridContainer>
           <GridItem s={12} m={11} l={7} xl={6} className='flex'>
             <div className="wrapper">
@@ -81,10 +83,12 @@ export default function Quote() {
             </div>
 
             <button ref={refreshIcon} onClick={getNewQuote}>
-              <IconRefresh />
+              <AccessibleIcon.Root label="fetch a new quote">
+                <RefreshIcon />
+              </AccessibleIcon.Root>
             </button>
           </GridItem>
         </GridContainer>
-      </StyledFig>
+      </StyledFigure>
   )
 }
