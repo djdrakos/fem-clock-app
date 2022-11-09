@@ -14,8 +14,6 @@ function App() {
   //elapsed time adjusted to user's location
   const [ currentTime, setCurrentTime ] = useState(null)
 
-
-
   useEffect(() => {
     const startClock = async () => {
       const res = await fetchCurrentTimeData()
@@ -31,7 +29,7 @@ function App() {
     if(startTime) {
       const tick =  setInterval(() => {
         const timePassed = Date.now() - startTime
-        const now = new Date(timeData.unixtime + timePassed)
+        const now = new Date(timeData.startTime + timePassed)
         setCurrentTime(`${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`)
       }, 1000)  
       
@@ -47,7 +45,12 @@ function App() {
   return (
     <StyledApp>
       { detailsIsOpen || <Quote /> }
-      <Clock clock={currentTime} timeData={timeData} detailsIsOpen={detailsIsOpen} toggleDetails={toggleDetails}/>
+      <Clock 
+        currentTime={currentTime} 
+        timeData={timeData} 
+        detailsIsOpen={detailsIsOpen} 
+        toggleDetails={toggleDetails}
+      />
       { detailsIsOpen && <Details timeData={timeData} /> } 
     </StyledApp>
   );

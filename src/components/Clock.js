@@ -51,24 +51,34 @@ const StyledMain = styled.main`
   }
 `
 
-export default function Clock({ clock, detailsIsOpen, timeData, toggleDetails }) {
+export default function Clock({ currentTime, detailsIsOpen, timeData, toggleDetails }) {
   if (timeData !== null) {
-    var { datetime, abbreviation } = timeData
+    var { timezoneAbbr } = timeData
   }
   return (
     <StyledMain className="clock">
-      { datetime &&
+      { currentTime &&
         <GridContainer>
           <GridItem>
             <section>
               <div className="wrapper">
                 <H4 as="p" className="greeting">
-                { detailsIsOpen 
-                  ? <><IconSun /> Good Morning</> 
-                  : <><IconMoon />Good Evening</>}
+                  { detailsIsOpen 
+                    ? <><IconSun /> Good Morning</> 
+                    : <><IconMoon />Good Evening</>
+                  }
                 </H4> 
-                <H1><time>{clock}<Timezone>{abbreviation}</Timezone></time></H1>
-                <H3 as="p">in Portland, USA</H3>
+                <H1>
+                  <time>
+                    {currentTime}
+                    <Timezone>
+                      {timezoneAbbr}
+                    </Timezone>
+                  </time>
+                </H1>
+                <H3 as="p">
+                  in Portland, USA
+                </H3>
               </div>
               <ToggleDetails detailsIsOpen={detailsIsOpen} toggleDetails={toggleDetails}/>
             </section>
