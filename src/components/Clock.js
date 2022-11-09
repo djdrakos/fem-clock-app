@@ -6,6 +6,8 @@ import { ReactComponent as IconSun } from '../assets/desktop/icon-sun.svg'
 import { ReactComponent as IconMoon } from '../assets/desktop/icon-moon.svg'
 import { H1, H3, H4, Timezone } from './Typography'
 import breakpoints from '../styles/breakpoints';
+import { formatTime } from '../utils/formatUtils'
+
 
 const StyledMain = styled.main`
   display: flex;
@@ -70,7 +72,7 @@ export default function Clock({ currentTime, detailsIsOpen, timeData, toggleDeta
                 </H4> 
                 <H1>
                   <time>
-                    {currentTime}
+                    {`${formatTime(currentTime)}`}
                     <Timezone>
                       {timezoneAbbr}
                     </Timezone>

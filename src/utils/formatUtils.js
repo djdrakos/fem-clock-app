@@ -16,12 +16,18 @@ export function formatDayOfWeek(number) {
   return daysOfTheWeek[number]
 }
 
-export function formatHour(number) {
-  if(number > 12) return (number - 12)
-  else return number
-}
+// export function formatHour(number) {
+//   if(number > 12) return (number - 12)
+//   else return number
+// }
 
-export function formatMinutes(number) {
-  if(number < 10) return `0${number}`
-  else return number;
+// export function formatMinutes(number) {
+//   if(number < 10) return `0${number}`
+//   else return number;
+// }
+
+export function formatTime(time) {
+  const [ hour, minutes ] = time.split(':')
+  
+  return `${hour > 12 ? hour - 12 : hour}:${minutes.length === 1 ? `0${minutes}` : minutes}`
 }
