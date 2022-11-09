@@ -51,25 +51,30 @@ const StyledMain = styled.main`
   }
 `
 
-export default function Clock({detailsIsOpen, toggleDetails}) {
+export default function Clock({ clock, detailsIsOpen, timeData, toggleDetails }) {
+  if (timeData !== null) {
+    var { datetime, abbreviation } = timeData
+  }
   return (
-      <StyledMain className="clock">
+    <StyledMain className="clock">
+      { datetime &&
         <GridContainer>
           <GridItem>
             <section>
               <div className="wrapper">
                 <H4 as="p" className="greeting">
-                  { detailsIsOpen 
+                { detailsIsOpen 
                   ? <><IconSun /> Good Morning</> 
                   : <><IconMoon />Good Evening</>}
                 </H4> 
-                <H1><time>9:54<Timezone>PST</Timezone></time></H1>
+                <H1><time>{clock}<Timezone>{abbreviation}</Timezone></time></H1>
                 <H3 as="p">in Portland, USA</H3>
               </div>
-            <ToggleDetails detailsIsOpen={detailsIsOpen} toggleDetails={toggleDetails}/>
+              <ToggleDetails detailsIsOpen={detailsIsOpen} toggleDetails={toggleDetails}/>
             </section>
           </GridItem>
         </GridContainer>
-      </StyledMain> 
+      }
+    </StyledMain> 
   )
 }
