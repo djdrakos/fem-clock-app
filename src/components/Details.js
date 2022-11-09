@@ -60,19 +60,21 @@ const Styled = styled.section`
   }
 `
 
-export default function Details() {
+export default function Details({timeData}) {
+  const { day_of_week, day_of_year, timezone, week_number } = timeData
+
 return (
     <Styled className="details">
       <GridContainer alignContent="center">
         <GridItem m={6} className="flex">
           <hgroup>
             <H6 as='h2'>Current timezone</H6>
-            <H2 as='p'>United States<wbr />/Portland</H2>
+            <H2 as='p'>{timezone}</H2>
           </hgroup>
           
           <hgroup>
             <H6 as='h2'>Day of the year</H6>
-            <H2 as='p'>312</H2>
+            <H2 as='p'>{day_of_year && day_of_year}</H2>
           </hgroup>
         </GridItem>
 
@@ -81,12 +83,12 @@ return (
         <GridItem m={5} className="flex">
           <hgroup>
             <H6 as='h2'>Day of the week</H6>
-            <H2 as='p'>Tuesday</H2>
+            <H2 as='p'>{day_of_week}</H2>
           </hgroup>
           
           <hgroup>
             <H6 as='h2'>Week number</H6>
-            <H2 as='p'>44</H2>
+            <H2 as='p'>{week_number && week_number}</H2>
           </hgroup>
         </GridItem>
       </GridContainer>

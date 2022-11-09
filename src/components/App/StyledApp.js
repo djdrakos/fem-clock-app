@@ -39,7 +39,6 @@ const StyledApp = styled.div`
   }
 
   @media screen and ${breakpoints.mobile} {
-
     .quote {
       padding-block-start: 2em;
     } 
@@ -56,9 +55,8 @@ const StyledApp = styled.div`
   @media (prefers-reduced-motion: reduce) {
   button {
     transition: none;
+    }
   }
-}
-  
-  `
+`
 
   export default StyledApp
