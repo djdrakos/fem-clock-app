@@ -1,9 +1,8 @@
 import styled from 'styled-components'
+import Greeting from './Greeting'
 import GridContainer from './GridContainer'
 import GridItem from './GridItem'
 import ToggleDetails from './ToggleDetails'
-import { ReactComponent as IconSun } from '../assets/desktop/icon-sun.svg'
-import { ReactComponent as IconMoon } from '../assets/desktop/icon-moon.svg'
 import { H1, H3, H4, Timezone } from './Typography'
 import breakpoints from '../styles/breakpoints';
 import { formatTime } from '../utils/formatUtils'
@@ -22,17 +21,6 @@ const StyledMain = styled.main`
     gap: 1rem;
   }
 
-  .greeting {
-    display: grid;
-    grid-template-columns: 2.5rem auto auto;
-    align-items: center;
-    justify-content: start;
-    
-    ::after {
-      content: ", it\'s currently";
-    }
-  }
-
   @media screen and ${breakpoints.tabletSm} {
     section {
       flex-direction: column;
@@ -46,10 +34,6 @@ const StyledMain = styled.main`
     section {
       gap: 3rem;
     }    
-
-    .greeting::after {
-      content: none;
-    }
   }
 `
 
@@ -64,12 +48,7 @@ export default function Clock({ currentTime, detailsIsOpen, timeData, toggleDeta
           <GridItem>
             <section>
               <div className="wrapper">
-                <H4 as="p" className="greeting">
-                  { detailsIsOpen 
-                    ? <><IconSun /> Good Morning</> 
-                    : <><IconMoon />Good Evening</>
-                  }
-                </H4> 
+                <Greeting currentTime={currentTime} />
                 <H1>
                   <time>
                     {`${formatTime(currentTime)}`}
