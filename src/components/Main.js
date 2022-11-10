@@ -7,7 +7,6 @@ import { H1, H3, Timezone } from './Typography'
 import breakpoints from '../styles/breakpoints';
 import { formatTime } from '../utils/formatUtils'
 
-
 const StyledMain = styled.main`
   display: flex;
   flex-direction: column; 
@@ -37,7 +36,14 @@ const StyledMain = styled.main`
   }
 `
 
-export default function Main({ currentTime, detailsIsOpen, status, timezoneAbbr, toggleDetails }) {
+export default function Main({ 
+  currentTime, 
+  detailsIsOpen, 
+  status, 
+  timeOfDay, 
+  timezoneAbbr, 
+  toggleDetails 
+}) {
 
 return (
     <StyledMain className="clock">
@@ -46,7 +52,7 @@ return (
           <GridItem>
             <section>
               <div className="wrapper">
-                <Greeting currentTime={currentTime} />
+                <Greeting timeOfDay={timeOfDay} />
                 <H1>
                   <time>
                     {`${formatTime(currentTime)}`}

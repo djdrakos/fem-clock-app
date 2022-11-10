@@ -21,24 +21,12 @@ const StyledGreeting = styled(H4)`
   }
 `
 
-export default function Greeting({currentTime}) {
-  const [hour] = currentTime.split(':')
-
-  const renderIcon = (hour) => {
-    if(hour >= 5 && hour < 18) return <IconSun /> 
-    if(hour >= 18 || hour < 5 ) return <IconMoon />
-  }
-
-  const renderGreeting = (hour) => {
-    if(hour >= 5 && hour < 12) return "Good Morning"
-    if(hour >= 12 && hour < 18 ) return "Good Afternoon"
-    if(hour >= 18 || hour < 5) return "Good Evening"
-  }
+export default function Greeting({timeOfDay}) {
 
   return (
     <StyledGreeting as='p'>
-      {renderIcon(hour)}
-      {renderGreeting(hour)}
+      { timeOfDay === 'evening' ? <IconMoon /> : <IconSun />}
+      {`Good ${timeOfDay}`}
     </StyledGreeting>
   )
 }

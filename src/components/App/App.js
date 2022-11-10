@@ -7,7 +7,7 @@ import useClock from '../../hooks/useClock'
 
 function App() {
   const [ detailsIsOpen, setDetailsIsOpen ] = useState(false)
-  const  { currentTime, clockOptions, status } = useClock()
+  const  { currentTime, clockOptions, status, timeOfDay } = useClock()
   
   const toggleDetails = () => {
     setDetailsIsOpen(state => !state);
@@ -21,6 +21,7 @@ function App() {
       currentTime={currentTime} 
       detailsIsOpen={detailsIsOpen} 
       status={status}
+      timeOfDay={timeOfDay}
       timezoneAbbr={clockOptions.timezoneAbbr}
       toggleDetails={toggleDetails}
       />

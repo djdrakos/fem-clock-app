@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { fetchClockOptions } from '../utils/fetchUtils'
 import { formatDayOfWeek, formatTimezoneLocation } from '../utils/formatUtils';
 
@@ -14,7 +14,15 @@ const useClock = () => {
   })
   const [ startTime, setStartTime ] = useState(null)
   const [ currentTime, setCurrentTime ] = useState(null)
-  
+  const [ timeOfDay, setTimeOfDay ] = useState()
+
+  const getTimeOfDay = useCallback((time) => {
+    const [hour] = time.split(':')
+
+    if(hour >= 5 && hour < 12) return "morning"
+    if(hour >= 12 && hour < 18 ) return "afternoon"
+    if(hour >= 18 || hour < 5) return "evening"
+  } , [])
     
   useEffect(() => {
     const setClock = async () => {
@@ -39,6 +47,7 @@ const useClock = () => {
         const { startTime } = formattedClockOptions
         const now = new Date(startTime)
         setCurrentTime(`${now.getHours()}:${now.getMinutes()}`)
+        setTimeOfDay(getTimeOfDay(`${now.getHours()}:${now.getMinutes()}`))
       } catch (error) {
         throw error
       } finally {
@@ -54,16 +63,18 @@ const useClock = () => {
         const timePassed = Date.now() - startTime
         const now = new Date(clockOptions.startTime + timePassed)
         setCurrentTime(`${now.getHours()}:${now.getMinutes()}`)
+        setTimeOfDay(getTimeOfDay(`${now.getHours()}:${now.getMinutes()}`))
       }, 1000)  
       
       return () => clearInterval(tick)
     }
-  }, [status, startTime, clockOptions]) 
+  }, [status, startTime, clockOptions, getTimeOfDay]) 
 
   return { 
+    clockOptions, 
     currentTime, 
     status,
-    clockOptions, 
+    timeOfDay
   } 
 }
 
