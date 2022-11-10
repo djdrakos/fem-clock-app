@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { forwardRef } from 'react'
 import breakpoints from '../styles/breakpoints';
 
 const StyledDiv = styled.div.attrs( props => ({ style:  props }))`
@@ -27,7 +28,7 @@ const StyledDiv = styled.div.attrs( props => ({ style:  props }))`
   `}
 `
 
-export default function GridItem({children, s, m, l, xl, ...props}) {
+const GridItem = forwardRef(({children, s, m, l, xl, ...props}, forwardedRef) => {
 
 const sizePropsArray = [ 
     { s }, 
@@ -76,8 +77,10 @@ const createGridOptions = (sizeProps) => {
   
 
 return (
-  <StyledDiv options={createGridOptions(sizePropsArray)} {...props}>
+  <StyledDiv options={createGridOptions(sizePropsArray)} {...props} ref={forwardedRef}>
       {children}
     </StyledDiv>
   )
-}
+})
+
+export default GridItem
