@@ -38,6 +38,7 @@ const StyledDiv = styled.div`
 export default function ClockDisplay({ 
   currentTime, 
   children, 
+  location,
   status, 
   timeOfDay, 
   timezoneAbbr, 
@@ -51,7 +52,7 @@ return (
             <div className="wrapper">
               <ClockGreeting timeOfDay={timeOfDay} />
               <ClockTime currentTime={currentTime} timezoneAbbr={timezoneAbbr} />
-              <ClockLocation />
+              <ClockLocation location={location} />
             </div>
             {children}
           </GridItem>

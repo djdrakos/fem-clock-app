@@ -12,7 +12,7 @@ import useClock from '../../hooks/useClock'
 
 function App() {
   const [ detailsIsOpen, setClockDetailsIsOpen ] = useState(false)
-  const  { currentTime, clockOptions, status, timeOfDay } = useClock()
+  const  { currentTime, clockOptions, location, status, timeOfDay } = useClock()
   const [ theme, setTheme ] = useState('day')
   
   useEffect(() => {
@@ -32,7 +32,7 @@ function App() {
       <StyledApp as="main">
         { detailsIsOpen || <Quote /> }
           
-        <ClockDisplay currentTime={currentTime} status={status} timeOfDay={timeOfDay} timezoneAbbr={clockOptions.timezoneAbbr}>
+        <ClockDisplay currentTime={currentTime} location={location} status={status} timeOfDay={timeOfDay} timezoneAbbr={clockOptions.timezoneAbbr}>
           <ToggleClockDetails detailsIsOpen={detailsIsOpen} toggleClockDetails={toggleClockDetails}/>
         </ClockDisplay>
 

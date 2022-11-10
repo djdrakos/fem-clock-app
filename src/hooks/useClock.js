@@ -12,9 +12,10 @@ const useClock = () => {
     week: '',
   })
   const [ currentTime, setCurrentTime ] = useState(null)
+  const [ location, setLocation ] = useState(null)
   const [ startTime, setStartTime ] = useState(null)
   const [ status, setStatus ] = useState('idle')
-  const [ timeOfDay, setTimeOfDay ] = useState()
+  const [ timeOfDay, setTimeOfDay ] = useState(null)
 
   const getTimeOfDay = useCallback((time) => {
     const [hour] = time.split(':')
@@ -48,6 +49,9 @@ const useClock = () => {
         setCurrentTime(`${now.getHours()}:${now.getMinutes()}`)
         setTimeOfDay(getTimeOfDay(`${now.getHours()}:${now.getMinutes()}`))
 
+        const {city, country} = await fetchAndJSON(`https://api.getgeoapi.com/v2/ip/check?api_key=${process.env.REACT_APP_IPGEO_API_KEY}`)
+        setLocation(`${city.name}, ${country.code}`)
+
       } catch (error) {
         throw error
       } finally {
@@ -74,6 +78,7 @@ const useClock = () => {
   return { 
     clockOptions, 
     currentTime, 
+    location,
     status,
     timeOfDay
   } 
