@@ -1,22 +1,44 @@
-import { useState } from 'react';
-import Clock from '../Clock';
-import Details from '../Details';
-import StyledApp from './StyledApp'
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyles } from '../../styles/global'
+import themes from '../../styles/theme'
+import { useEffect, useState } from 'react';
+import Background from '../../components/Background';
+import ClockDetails from '../ClockDetails';
+import ClockDisplay from '../ClockDisplay';
 import Quote from '../Quote'
+import StyledApp from './StyledApp'
+import ToggleClockDetails from '../ToggleClockDetails'
+import useClock from '../../hooks/useClock'
 
 function App() {
-  const [detailsIsOpen, setDetailsIsOpen] = useState(false);
+  const [ detailsIsOpen, setClockDetailsIsOpen ] = useState(false)
+  const  { currentTime, clockOptions, location, status, timeOfDay } = useClock()
+  const [ theme, setTheme ] = useState('day')
+  
+  useEffect(() => {
+    if(timeOfDay === 'evening') setTheme('night')
+    else setTheme('day')
 
-  const toggleDetails = () => {
-    setDetailsIsOpen(state => !state);
+  }, [timeOfDay])
+
+  const toggleClockDetails = () => {
+    setClockDetailsIsOpen(state => !state);
   }
   
   return (
-    <StyledApp>
-      { detailsIsOpen || <Quote /> }
-      <Clock detailsIsOpen={detailsIsOpen} toggleDetails={toggleDetails}/>
-      { detailsIsOpen && <Details /> } 
-    </StyledApp>
+    <ThemeProvider theme={themes[theme]}>
+      <GlobalStyles />
+      <Background />
+      <StyledApp as="main">
+        { detailsIsOpen || <Quote /> }
+          
+        <ClockDisplay currentTime={currentTime} location={location} status={status} timeOfDay={timeOfDay} timezoneAbbr={clockOptions.timezoneAbbr}>
+          <ToggleClockDetails detailsIsOpen={detailsIsOpen} toggleClockDetails={toggleClockDetails}/>
+        </ClockDisplay>
+
+        { detailsIsOpen && <ClockDetails clockOptions={clockOptions}/> }
+      </StyledApp>
+    </ThemeProvider>
   );
 }
 

@@ -34,12 +34,11 @@ const StyledApp = styled.div`
     }
     
     .details {
-      height: 42vh;
+      flex-basis: 42vh;
     }
   }
 
   @media screen and ${breakpoints.mobile} {
-
     .quote {
       padding-block-start: 2em;
     } 
@@ -49,16 +48,15 @@ const StyledApp = styled.div`
     }
 
     .details {
-      height: 38vh;
+      flex-basis: 38vh;
     }
   }  
 
   @media (prefers-reduced-motion: reduce) {
   button {
     transition: none;
+    }
   }
-}
-  
-  `
+`
 
   export default StyledApp

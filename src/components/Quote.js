@@ -5,7 +5,7 @@ import { ReactComponent as RefreshIcon } from '../assets/desktop/icon-refresh.sv
 import GridContainer from './GridContainer';
 import GridItem from './GridItem';
 import { H5, P } from './Typography';
-import { fetchRandomQuote } from '../utils/fetchUtils'
+import { fetchAndJSON } from '../utils/fetchUtils'
 
 const StyledFigure = styled.figure`
   .flex {
@@ -52,7 +52,7 @@ export default function Quote() {
       { duration: 500 }
     )
     setQuote(null)
-    fetchRandomQuote()
+    fetchAndJSON("https://programming-quotes-api.herokuapp.com/Quotes/random")
       .then((quote) => setQuote(quote))
   }, [])
   
