@@ -3,9 +3,10 @@ import GridContainer from './GridContainer'
 import GridItem from './GridItem'
 import { H2, H6 } from './Typography'
 import breakpoints from '../styles/breakpoints';
+import * as Collapsible from '@radix-ui/react-collapsible';
 import * as Separator from '@radix-ui/react-separator';
 
-const Styled = styled.section`
+const StyledContent = styled(Collapsible.Content)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -60,12 +61,12 @@ const Styled = styled.section`
   }
 `
 
-export default function ClockDetails({clockOptions}) {
+export default function CollapsibleDetailsContent({clockOptions, ...props}) {
   const { dayOfWeek, dayofYear, timezone, week } = clockOptions
 
 return (
-    <Styled className="details">
-      <GridContainer alignContent="center">
+    <StyledContent {...props}>
+      <GridContainer as="section" alignContent="center">
         <GridItem m={6} className="flex">
           <hgroup>
             <H6 as='h2'>Current timezone</H6>
@@ -81,7 +82,8 @@ return (
           </hgroup>
         </GridItem>
 
-        <Separator.Root asChild orientation="vertical" decorative>
+        <Separator.Root asChild decorative>
+
           <GridItem m={1} className="separator"></GridItem>
         </Separator.Root>
           
@@ -97,6 +99,6 @@ return (
           </hgroup>
         </GridItem>
       </GridContainer>
-    </Styled>
+    </StyledContent>
   )
 }
