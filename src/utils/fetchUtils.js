@@ -1,0 +1,5 @@
+export const fetchRandomQuote = async () => {
+  const res = await fetch("https://programming-quotes-api.herokuapp.com/Quotes/random");
+  const body = await res.json()
+  return body
+}

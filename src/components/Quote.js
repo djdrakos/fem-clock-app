@@ -1,14 +1,17 @@
-import styled from 'styled-components';
-import { H5, P } from './Typography';
-import { ReactComponent as IconRefresh } from '../assets/desktop/icon-refresh.svg'
-import breakpoints from '../styles/breakpoints';
+import styled from 'styled-components'
+import * as AccessibleIcon from '@radix-ui/react-accessible-icon'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { ReactComponent as RefreshIcon } from '../assets/desktop/icon-refresh.svg'
 import GridContainer from './GridContainer';
 import GridItem from './GridItem';
+import { H5, P } from './Typography';
+import { fetchRandomQuote } from '../utils/fetchUtils'
 
-const StyledFig = styled.figure`
+const StyledFigure = styled.figure`
   .flex {
     flex-direction: row;
-    gap: 1rem;
+    gap: .5rem;
+    justify-content: space-between;
   }
 
   blockquote {
@@ -20,39 +23,72 @@ const StyledFig = styled.figure`
   button {
     background: none;
     border-radius: 50%;
-    height: 2.5rem;
-    width: 2.5rem;
+    height: fit-content;
+    width: fit-content;
+    padding: .5rem;
     justify-content: center;
+    will-change: transform;
+
+    path {
+      -webkit-transition: opacity .25s ease-out;
+      -moz-transition: opacity .25s ease-out;
+      -o-transition: opacity .25s ease-out;
+      transition: opacity .25s ease-out;
+    }
+
+    &:hover, &:focus {
+    path { opacity: 1; }
+    }
   }
-
-  @media screen and ${breakpoints.tabletSm} {
-
-  }
-
-  @media screen and ${breakpoints.tabletSm} {
-
-  } 
 `
 
 export default function Quote() {
+  const [ quote, setQuote ] = useState(null);
+  const refreshIcon = useRef(null)
+
+  const getNewQuote = useCallback(() => {
+    refreshIcon.current.animate(
+      { transform: 'rotate(360deg)' },
+      { duration: 500 }
+    )
+    setQuote(null)
+    fetchRandomQuote()
+      .then((quote) => setQuote(quote))
+  }, [])
+  
+  
+  useEffect(() => {
+    getNewQuote()
+    
+  }, [getNewQuote])
+
+
   return (
-      <StyledFig className='quote'>
+      <StyledFigure className='quote'>
         <GridContainer>
           <GridItem s={12} m={11} l={7} xl={6} className='flex'>
             <div className="wrapper">
-              <P as="blockquote">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta et diam in vestibulum. Aliquam nunc enim, condimentum in volutpat viverra, ultricies non sem.
-              </P>
-              <H5 as="figcaption">
-                Phasellus eu Nisi Mauris
-              </H5>
+              { quote === null
+              ? <p>Loading Quote...</p>
+              : 
+              <>
+                <P as="blockquote">
+                  {quote?.en}
+                </P>
+                <H5 as="figcaption">
+                  {quote?.author}
+                </H5>
+              </>
+              }
             </div>
 
-            <button>
-              <IconRefresh />
+            <button ref={refreshIcon} onClick={getNewQuote}>
+              <AccessibleIcon.Root label="fetch a new quote">
+                <RefreshIcon />
+              </AccessibleIcon.Root>
             </button>
           </GridItem>
         </GridContainer>
-      </StyledFig>
+      </StyledFigure>
   )
 }

@@ -121,7 +121,6 @@ const P = styled.p`
   font-weight: 400;
   font-size: 1.125rem;
   line-height: 1.75rem;
-  text-transform: capitalize;
 
   @media screen and ${breakpoints.mobile} {
     font-size: .75rem;
