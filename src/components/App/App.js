@@ -7,6 +7,7 @@ import ClockDetails from '../ClockDetails';
 import ClockDisplay from '../ClockDisplay';
 import Quote from '../Quote'
 import StyledApp from './StyledApp'
+import ToggleClockDetails from '../ToggleClockDetails'
 import useClock from '../../hooks/useClock'
 
 function App() {
@@ -31,14 +32,9 @@ function App() {
       <StyledApp as="main">
         { detailsIsOpen || <Quote /> }
           
-        <ClockDisplay 
-          currentTime={currentTime} 
-          detailsIsOpen={detailsIsOpen} 
-          status={status}
-          timeOfDay={timeOfDay}
-          timezoneAbbr={clockOptions.timezoneAbbr}
-          toggleClockDetails={toggleClockDetails}
-        />
+        <ClockDisplay currentTime={currentTime} status={status} timeOfDay={timeOfDay} timezoneAbbr={clockOptions.timezoneAbbr}>
+          <ToggleClockDetails detailsIsOpen={detailsIsOpen} toggleClockDetails={toggleClockDetails}/>
+        </ClockDisplay>
 
         { detailsIsOpen && <ClockDetails clockOptions={clockOptions}/> }
       </StyledApp>

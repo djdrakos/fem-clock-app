@@ -3,7 +3,6 @@ import { fetchClockOptions } from '../utils/fetchUtils'
 import { formatDayOfWeek, formatTimezoneLocation } from '../utils/formatUtils';
 
 const useClock = () => {
-  const [ status, setStatus ] = useState('idle')
   const [ clockOptions, setClockOptions ] = useState({
     dayOfWeek: '',
     dayofYear: '',
@@ -12,8 +11,9 @@ const useClock = () => {
     timezoneAbbr: '',
     week: '',
   })
-  const [ startTime, setStartTime ] = useState(null)
   const [ currentTime, setCurrentTime ] = useState(null)
+  const [ startTime, setStartTime ] = useState(null)
+  const [ status, setStatus ] = useState('idle')
   const [ timeOfDay, setTimeOfDay ] = useState()
 
   const getTimeOfDay = useCallback((time) => {
@@ -23,16 +23,16 @@ const useClock = () => {
     if(hour >= 12 && hour < 18 ) return "afternoon"
     if(hour >= 18 || hour < 5) return "evening"
   } , [])
-    
+
   useEffect(() => {
     const setClock = async () => {
       try {
         setStatus('pending')
-  
+
         const res = await fetchClockOptions()
-  
+        
         setStartTime(Date.now())
-  
+        
         const formattedClockOptions = {
           dayOfWeek: formatDayOfWeek(res.day_of_week),
           dayofYear: res.day_of_year,
@@ -44,16 +44,17 @@ const useClock = () => {
         
         setClockOptions(formattedClockOptions)
   
-        const { startTime } = formattedClockOptions
-        const now = new Date(startTime)
+        const now = new Date(formattedClockOptions.startTime)
         setCurrentTime(`${now.getHours()}:${now.getMinutes()}`)
         setTimeOfDay(getTimeOfDay(`${now.getHours()}:${now.getMinutes()}`))
+
       } catch (error) {
         throw error
       } finally {
         setStatus('resolved')
       }
     }
+
     setClock()
   }, [])
 

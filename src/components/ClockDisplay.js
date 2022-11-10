@@ -4,7 +4,6 @@ import ClockLocation from './ClockLocation'
 import ClockTime from './ClockTime'
 import GridContainer from './GridContainer'
 import GridItem from './GridItem'
-import ToggleClockDetails from './ToggleClockDetails'
 import breakpoints from '../styles/breakpoints';
 
 const StyledDiv = styled.div`
@@ -38,11 +37,10 @@ const StyledDiv = styled.div`
 
 export default function ClockDisplay({ 
   currentTime, 
-  detailsIsOpen, 
+  children, 
   status, 
   timeOfDay, 
   timezoneAbbr, 
-  toggleClockDetails 
 }) {
 
 return (
@@ -55,10 +53,10 @@ return (
               <ClockTime currentTime={currentTime} timezoneAbbr={timezoneAbbr} />
               <ClockLocation />
             </div>
-            <ToggleClockDetails detailsIsOpen={detailsIsOpen} toggleClockDetails={toggleClockDetails}/>
+            {children}
           </GridItem>
           }
-        </GridContainer>
+      </GridContainer>
     </StyledDiv> 
   )
 }
