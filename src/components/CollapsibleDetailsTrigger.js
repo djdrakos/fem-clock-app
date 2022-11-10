@@ -22,16 +22,6 @@ const StyledTrigger = styled(Collapsible.Trigger)`
   letter-spacing: .3125rem;
   padding: .5rem;
 
-  span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--grey-dark);
-    border-radius: 50%;
-    height: var(--arrowBgSize);
-    width: var(--arrowBgSize);
-  }
-
   :hover {
     span {
       background-color: var(--grey-light);
