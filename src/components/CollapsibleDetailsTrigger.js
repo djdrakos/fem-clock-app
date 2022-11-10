@@ -39,11 +39,7 @@ const StyledTrigger = styled(Collapsible.Trigger)`
   }
 `
 
-export default function CollapsibleDetailsTrigger({open, setOpen}) {
-
-  const toggleOpen = () => {
-    setOpen((prevState) => !prevState)
-  }
+export default function CollapsibleDetailsTrigger({open, toggleOpen}) {
 
   return (
     <StyledTrigger onClick={toggleOpen}>
