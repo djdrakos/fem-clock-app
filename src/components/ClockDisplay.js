@@ -49,7 +49,7 @@ return (
     <StyledSection {...props}>
       <GridContainer>
         { status === 'resolved' &&
-          <GridItem className="flex-row">
+          <GridItem className="flex">
             <div className="wrapper">
               <ClockGreeting timeOfDay={timeOfDay} />
               <ClockTime currentTime={currentTime} timezoneAbbr={timezoneAbbr} />
