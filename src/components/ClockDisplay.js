@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import ClockTime from './ClockTime'
 import ClockGreeting from './ClockGreeting'
+import ClockLocation from './ClockLocation'
+import ClockTime from './ClockTime'
 import GridContainer from './GridContainer'
 import GridItem from './GridItem'
 import ToggleClockDetails from './ToggleClockDetails'
-import { H3 } from './Typography'
 import breakpoints from '../styles/breakpoints';
 
 const StyledDiv = styled.div`
@@ -49,17 +49,13 @@ return (
     <StyledDiv className="clock">
       <GridContainer>
         { status === 'resolved' &&
-          <GridItem>
-            <section>
-              <div className="wrapper">
-                <ClockGreeting timeOfDay={timeOfDay} />
-                <ClockTime currentTime={currentTime} timezoneAbbr={timezoneAbbr} />
-                <H3 as="p">
-                  in Portland, USA
-                </H3>
-              </div>
-              <ToggleClockDetails detailsIsOpen={detailsIsOpen} toggleClockDetails={toggleClockDetails}/>
-            </section>
+          <GridItem as="section">
+            <div className="wrapper">
+              <ClockGreeting timeOfDay={timeOfDay} />
+              <ClockTime currentTime={currentTime} timezoneAbbr={timezoneAbbr} />
+              <ClockLocation />
+            </div>
+            <ToggleClockDetails detailsIsOpen={detailsIsOpen} toggleClockDetails={toggleClockDetails}/>
           </GridItem>
           }
         </GridContainer>
