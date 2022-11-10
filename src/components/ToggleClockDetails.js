@@ -1,3 +1,4 @@
+
 import styled from 'styled-components';
 import { ReactComponent as IconArrowDown } from '../assets/desktop/icon-arrow-down.svg'
 import { ReactComponent as IconArrowUp } from '../assets/desktop/icon-arrow-up.svg'
@@ -46,9 +47,9 @@ const Styled = styled.button`
   }
 `
 
-export default function ToggleDetails({detailsIsOpen, toggleDetails}) {
+export default function ToggleClockDetails({detailsIsOpen, toggleClockDetails}) {
   return (
-    <Styled onClick={toggleDetails}>
+    <Styled onClick={toggleClockDetails}>
       { !detailsIsOpen
       ? <>More 
           {/* <span> */}

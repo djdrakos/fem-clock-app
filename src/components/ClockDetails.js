@@ -59,7 +59,7 @@ const Styled = styled.section`
   }
 `
 
-export default function Details({clockOptions}) {
+export default function ClockDetails({clockOptions}) {
   const { dayOfWeek, dayofYear, timezone, week } = clockOptions
 
 return (

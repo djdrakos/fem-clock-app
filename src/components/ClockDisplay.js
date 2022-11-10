@@ -2,12 +2,12 @@ import styled from 'styled-components'
 import Greeting from './Greeting'
 import GridContainer from './GridContainer'
 import GridItem from './GridItem'
-import ToggleDetails from './ToggleDetails'
+import ToggleClockDetails from './ToggleClockDetails'
 import { H1, H3, Timezone } from './Typography'
 import breakpoints from '../styles/breakpoints';
 import { formatTime } from '../utils/formatUtils'
 
-const StyledMain = styled.main`
+const StyledDiv = styled.div`
   display: flex;
   flex-direction: column; 
   justify-content: flex-end;
@@ -36,17 +36,17 @@ const StyledMain = styled.main`
   }
 `
 
-export default function Main({ 
+export default function ClockDisplay({ 
   currentTime, 
   detailsIsOpen, 
   status, 
   timeOfDay, 
   timezoneAbbr, 
-  toggleDetails 
+  toggleClockDetails 
 }) {
 
 return (
-    <StyledMain className="clock">
+    <StyledDiv className="clock">
       <GridContainer>
         { status === 'resolved' &&
           <GridItem>
@@ -65,11 +65,11 @@ return (
                   in Portland, USA
                 </H3>
               </div>
-              <ToggleDetails detailsIsOpen={detailsIsOpen} toggleDetails={toggleDetails}/>
+              <ToggleClockDetails detailsIsOpen={detailsIsOpen} toggleClockDetails={toggleClockDetails}/>
             </section>
           </GridItem>
           }
         </GridContainer>
-    </StyledMain> 
+    </StyledDiv> 
   )
 }

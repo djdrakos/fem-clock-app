@@ -1,33 +1,48 @@
-import { useState } from 'react';
-import Main from '../Main';
-import Details from '../Details';
-import StyledApp from './StyledApp'
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyles } from '../../styles/global'
+import themes from '../../styles/theme'
+import { useEffect, useState } from 'react';
+import Background from '../../components/Background';
+import ClockDetails from '../ClockDetails';
+import ClockDisplay from '../ClockDisplay';
 import Quote from '../Quote'
+import StyledApp from './StyledApp'
 import useClock from '../../hooks/useClock'
 
 function App() {
-  const [ detailsIsOpen, setDetailsIsOpen ] = useState(false)
+  const [ detailsIsOpen, setClockDetailsIsOpen ] = useState(false)
   const  { currentTime, clockOptions, status, timeOfDay } = useClock()
+  const [ theme, setTheme ] = useState('day')
   
-  const toggleDetails = () => {
-    setDetailsIsOpen(state => !state);
+  useEffect(() => {
+    if(timeOfDay === 'evening') setTheme('night')
+    else setTheme('day')
+
+  }, [timeOfDay])
+
+  const toggleClockDetails = () => {
+    setClockDetailsIsOpen(state => !state);
   }
   
   return (
-    <StyledApp>
-      { detailsIsOpen || <Quote /> }
-        
-      <Main 
-      currentTime={currentTime} 
-      detailsIsOpen={detailsIsOpen} 
-      status={status}
-      timeOfDay={timeOfDay}
-      timezoneAbbr={clockOptions.timezoneAbbr}
-      toggleDetails={toggleDetails}
-      />
+    <ThemeProvider theme={themes[theme]}>
+      <GlobalStyles />
+      <Background />
+      <StyledApp as="main">
+        { detailsIsOpen || <Quote /> }
+          
+        <ClockDisplay 
+          currentTime={currentTime} 
+          detailsIsOpen={detailsIsOpen} 
+          status={status}
+          timeOfDay={timeOfDay}
+          timezoneAbbr={clockOptions.timezoneAbbr}
+          toggleClockDetails={toggleClockDetails}
+        />
 
-      { detailsIsOpen && <Details clockOptions={clockOptions}/> }
-    </StyledApp>
+        { detailsIsOpen && <ClockDetails clockOptions={clockOptions}/> }
+      </StyledApp>
+    </ThemeProvider>
   );
 }
 
