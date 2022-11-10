@@ -3,7 +3,7 @@ import Greeting from './Greeting'
 import GridContainer from './GridContainer'
 import GridItem from './GridItem'
 import ToggleDetails from './ToggleDetails'
-import { H1, H3, H4, Timezone } from './Typography'
+import { H1, H3, Timezone } from './Typography'
 import breakpoints from '../styles/breakpoints';
 import { formatTime } from '../utils/formatUtils'
 
@@ -33,18 +33,16 @@ const StyledMain = styled.main`
   @media screen and ${breakpoints.mobile} {
     section {
       gap: 3rem;
-    }    
+    }
   }
 `
 
-export default function Clock({ currentTime, detailsIsOpen, timeData, toggleDetails }) {
-  if (timeData !== null) {
-    var { timezoneAbbr } = timeData
-  }
-  return (
+export default function Main({ currentTime, detailsIsOpen, status, timezoneAbbr, toggleDetails }) {
+
+return (
     <StyledMain className="clock">
-      { currentTime &&
-        <GridContainer>
+      <GridContainer>
+        { status === 'resolved' &&
           <GridItem>
             <section>
               <div className="wrapper">
@@ -64,8 +62,8 @@ export default function Clock({ currentTime, detailsIsOpen, timeData, toggleDeta
               <ToggleDetails detailsIsOpen={detailsIsOpen} toggleDetails={toggleDetails}/>
             </section>
           </GridItem>
+          }
         </GridContainer>
-      }
     </StyledMain> 
   )
 }

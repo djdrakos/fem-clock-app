@@ -56,12 +56,11 @@ const Styled = styled.section`
       p { text-align: end; }
 
     }
-
   }
 `
 
-export default function Details({timeData}) {
-  const { dayOfWeek, dayofYear, timezone, week } = timeData
+export default function Details({clockOptions}) {
+  const { dayOfWeek, dayofYear, timezone, week } = clockOptions
 
 return (
     <Styled className="details">
@@ -77,7 +76,7 @@ return (
           
           <hgroup>
             <H6 as='h2'>Day of the year</H6>
-            <H2 as='p'>{dayofYear && dayofYear}</H2>
+            <H2 as='p'>{dayofYear}</H2>
           </hgroup>
         </GridItem>
 
@@ -86,15 +85,15 @@ return (
         <GridItem m={5} className="flex">
           <hgroup>
             <H6 as='h2'>Day of the week</H6>
-            <H2 as='p'>{dayOfWeek && dayOfWeek}</H2>
+            <H2 as='p'>{dayOfWeek}</H2>
           </hgroup>
           
           <hgroup>
             <H6 as='h2'>Week number</H6>
-            <H2 as='p'>{week && week}</H2>
+            <H2 as='p'>{week}</H2>
           </hgroup>
         </GridItem>
       </GridContainer>
     </Styled>
-)
+  )
 }
