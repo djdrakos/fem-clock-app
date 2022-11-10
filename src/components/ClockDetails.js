@@ -3,6 +3,7 @@ import GridContainer from './GridContainer'
 import GridItem from './GridItem'
 import { H2, H6 } from './Typography'
 import breakpoints from '../styles/breakpoints';
+import * as Separator from '@radix-ui/react-separator';
 
 const Styled = styled.section`
   display: flex;
@@ -80,7 +81,9 @@ return (
           </hgroup>
         </GridItem>
 
-        <GridItem m={1} className="separator"></GridItem>
+        <Separator.Root asChild orientation="vertical" decorative>
+          <GridItem m={1} className="separator"></GridItem>
+        </Separator.Root>
           
         <GridItem m={5} className="flex">
           <hgroup>
