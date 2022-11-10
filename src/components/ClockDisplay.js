@@ -6,12 +6,12 @@ import GridContainer from './GridContainer'
 import GridItem from './GridItem'
 import breakpoints from '../styles/breakpoints';
 
-const StyledDiv = styled.div`
+const StyledSection = styled.section`
   display: flex;
   flex-direction: column; 
   justify-content: flex-end;
 
-  section {
+  .flex {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -20,7 +20,7 @@ const StyledDiv = styled.div`
   }
 
   @media screen and ${breakpoints.tabletSm} {
-    section {
+    .flex {
       flex-direction: column;
       align-items: flex-start;
       justify-content: flex-end;
@@ -29,7 +29,7 @@ const StyledDiv = styled.div`
   }
 
   @media screen and ${breakpoints.mobile} {
-    section {
+    .flex {
       gap: 3rem;
     }
   }
@@ -42,13 +42,14 @@ export default function ClockDisplay({
   status, 
   timeOfDay, 
   timezoneAbbr, 
+  ...props
 }) {
 
 return (
-    <StyledDiv className="clock">
+    <StyledSection {...props}>
       <GridContainer>
         { status === 'resolved' &&
-          <GridItem as="section">
+          <GridItem className="flex-row">
             <div className="wrapper">
               <ClockGreeting timeOfDay={timeOfDay} />
               <ClockTime currentTime={currentTime} timezoneAbbr={timezoneAbbr} />
@@ -58,6 +59,6 @@ return (
           </GridItem>
           }
       </GridContainer>
-    </StyledDiv> 
+    </StyledSection> 
   )
 }

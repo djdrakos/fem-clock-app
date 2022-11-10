@@ -3,8 +3,10 @@ import styled from 'styled-components';
 import { ReactComponent as IconArrowDown } from '../assets/desktop/icon-arrow-down.svg'
 import { ReactComponent as IconArrowUp } from '../assets/desktop/icon-arrow-up.svg'
 import breakpoints from '../styles/breakpoints';
+import * as Collapsible from '@radix-ui/react-collapsible';
+import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
 
-const Styled = styled.button`
+const StyledTrigger = styled(Collapsible.Trigger)`
   --arrowBgSize: 2.5rem;
   display: grid;
   grid-template-columns: 1fr var(--arrowBgSize);
@@ -19,16 +21,6 @@ const Styled = styled.button`
   text-transform: uppercase;
   letter-spacing: .3125rem;
   padding: .5rem;
-
-  span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--grey-dark);
-    border-radius: 50%;
-    height: var(--arrowBgSize);
-    width: var(--arrowBgSize);
-  }
 
   :hover {
     span {
@@ -47,20 +39,18 @@ const Styled = styled.button`
   }
 `
 
-export default function ToggleClockDetails({detailsIsOpen, toggleClockDetails}) {
+export default function CollapsibleDetailsTrigger({open, setOpen}) {
+
+  const toggleOpen = () => {
+    setOpen((prevState) => !prevState)
+  }
+
   return (
-    <Styled onClick={toggleClockDetails}>
-      { !detailsIsOpen
-      ? <>More 
-          {/* <span> */}
-            <IconArrowDown />
-          {/* </span> */}
-        </> 
-      : <> Less 
-          {/* <span> */}
-            <IconArrowUp />
-          {/* </span> */}
-      </> }
-    </Styled>
+    <StyledTrigger onClick={toggleOpen}>
+      { !open ? 'More' : 'Less' }
+      <AccessibleIcon label="details about the current clock">
+      { !open ? <IconArrowDown /> : <IconArrowUp /> }
+      </AccessibleIcon>
+    </StyledTrigger>
   )
 }

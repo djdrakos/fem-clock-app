@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import * as AccessibleIcon from '@radix-ui/react-accessible-icon'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
+import { forwardRef, useCallback, useEffect, useRef, useState } from 'react'
 import { ReactComponent as RefreshIcon } from '../assets/desktop/icon-refresh.svg'
 import GridContainer from './GridContainer';
 import GridItem from './GridItem';
@@ -42,7 +42,7 @@ const StyledFigure = styled.figure`
   }
 `
 
-export default function Quote() {
+const Quote = forwardRef((props, forwardedRef) => {
   const [ quote, setQuote ] = useState(null);
   const refreshIcon = useRef(null)
 
@@ -64,7 +64,7 @@ export default function Quote() {
 
 
   return (
-      <StyledFigure className='quote'>
+      <StyledFigure ref={forwardedRef} {...props}>
         <GridContainer>
           <GridItem s={12} m={11} l={7} xl={6} className='flex'>
             <div className="wrapper">
@@ -83,12 +83,14 @@ export default function Quote() {
             </div>
 
             <button ref={refreshIcon} onClick={getNewQuote}>
-              <AccessibleIcon.Root label="fetch a new quote">
+              <AccessibleIcon label="fetch a new quote">
                 <RefreshIcon />
-              </AccessibleIcon.Root>
+              </AccessibleIcon>
             </button>
           </GridItem>
         </GridContainer>
       </StyledFigure>
   )
-}
+})
+
+export default Quote
