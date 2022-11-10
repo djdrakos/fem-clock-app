@@ -4,7 +4,7 @@ import { ReactComponent as IconSun } from '../assets/desktop/icon-sun.svg'
 import { ReactComponent as IconMoon } from '../assets/desktop/icon-moon.svg'
 import breakpoints from '../styles/breakpoints';
 
-const StyledGreeting = styled(H4)`
+const StyledClockGreeting = styled(H4)`
     display: grid;
     grid-template-columns: 2.5rem auto auto;
     align-items: center;
@@ -21,12 +21,12 @@ const StyledGreeting = styled(H4)`
   }
 `
 
-export default function Greeting({timeOfDay}) {
+export default function ClockGreeting({timeOfDay}) {
 
   return (
-    <StyledGreeting as='p'>
+    <StyledClockGreeting as='p'>
       { timeOfDay === 'evening' ? <IconMoon /> : <IconSun />}
       {`Good ${timeOfDay}`}
-    </StyledGreeting>
+    </StyledClockGreeting>
   )
 }
