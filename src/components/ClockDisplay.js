@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import Greeting from './Greeting'
+import ClockTime from './ClockTime'
+import ClockGreeting from './ClockGreeting'
 import GridContainer from './GridContainer'
 import GridItem from './GridItem'
 import ToggleClockDetails from './ToggleClockDetails'
-import { H1, H3, Timezone } from './Typography'
+import { H3 } from './Typography'
 import breakpoints from '../styles/breakpoints';
-import { formatTime } from '../utils/formatUtils'
 
 const StyledDiv = styled.div`
   display: flex;
@@ -52,15 +52,8 @@ return (
           <GridItem>
             <section>
               <div className="wrapper">
-                <Greeting timeOfDay={timeOfDay} />
-                <H1>
-                  <time>
-                    {`${formatTime(currentTime)}`}
-                    <Timezone>
-                      {timezoneAbbr}
-                    </Timezone>
-                  </time>
-                </H1>
+                <ClockGreeting timeOfDay={timeOfDay} />
+                <ClockTime currentTime={currentTime} timezoneAbbr={timezoneAbbr} />
                 <H3 as="p">
                   in Portland, USA
                 </H3>
