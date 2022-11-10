@@ -3,6 +3,7 @@ import { H4 } from './Typography'
 import { ReactComponent as IconSun } from '../assets/desktop/icon-sun.svg'
 import { ReactComponent as IconMoon } from '../assets/desktop/icon-moon.svg'
 import breakpoints from '../styles/breakpoints';
+import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
 
 const StyledClockGreeting = styled(H4)`
     display: grid;
@@ -25,7 +26,14 @@ export default function ClockGreeting({timeOfDay}) {
 
   return (
     <StyledClockGreeting as='p'>
-      { timeOfDay === 'evening' ? <IconMoon /> : <IconSun />}
+      { timeOfDay === 'evening' 
+      ? <AccessibleIcon label='Moon Icon'>
+          <IconMoon />
+        </AccessibleIcon>
+      : <AccessibleIcon label='Sun Icon'>
+          <IconSun />
+        </AccessibleIcon>
+      }
       {`Good ${timeOfDay}`}
     </StyledClockGreeting>
   )
