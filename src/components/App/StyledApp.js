@@ -34,7 +34,7 @@ const StyledApp = styled.div`
     }
     
     .details {
-      height: 42vh;
+      flex-basis: 42vh;
     }
   }
 
@@ -48,7 +48,7 @@ const StyledApp = styled.div`
     }
 
     .details {
-      height: 38vh;
+      flex-basis: 38vh;
     }
   }  
 
