@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { fetchClockOptions } from '../utils/fetchUtils'
+import { fetchAndJSON } from '../utils/fetchUtils'
 import { formatDayOfWeek, formatTimezoneLocation } from '../utils/formatUtils';
 
 const useClock = () => {
@@ -29,7 +29,7 @@ const useClock = () => {
       try {
         setStatus('pending')
 
-        const res = await fetchClockOptions()
+        const res = await fetchAndJSON("http://worldtimeapi.org/api/ip")
         
         setStartTime(Date.now())
         
@@ -56,7 +56,7 @@ const useClock = () => {
     }
 
     setClock()
-  }, [])
+  }, [getTimeOfDay])
 
   useEffect(() => {
     if(status === 'resolved') {
