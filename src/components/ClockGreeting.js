@@ -15,7 +15,7 @@ const StyledClockGreeting = styled(H4)`
       content: ", it\'s currently";
     }
 
-  @media screen and ${breakpoints.mobile} {
+    ${`@media screen and ${breakpoints.mobile}`} {
     &::after {
       content: none;
     }

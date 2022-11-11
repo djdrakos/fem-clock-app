@@ -35,7 +35,7 @@ const StyledContent = styled(Collapsible.Content)`
     opacity: .25;
   }
 
-  @media screen and ${breakpoints.tabletSm} {
+  ${`@media screen and ${breakpoints.tabletSm}`} {
     hgroup:first-of-type {
       margin-block-end: 3rem;
     }
@@ -45,7 +45,7 @@ const StyledContent = styled(Collapsible.Content)`
     }
   }
 
-  @media screen and ${breakpoints.mobile} {
+  ${`@media screen and ${breakpoints.mobile}`} {
     hgroup {
       &:first-of-type {
       margin-block-end: .5rem;

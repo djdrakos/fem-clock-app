@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { H1, H3, Timezone } from './Typography'
+import { H1, Timezone } from './Typography'
 import { formatTime } from '../utils/formatUtils'
 
 const StyledClockTime = styled(H1)``

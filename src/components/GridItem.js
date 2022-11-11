@@ -9,17 +9,17 @@ const StyledDiv = styled.div.attrs( props => ({ style:  props }))`
     }
     `}
 
-    ${ ({ options }) => options && css`
+  ${ ({ options }) => options && css`
     @media screen and ${breakpoints.tabletLg} {
       grid-column: ${options.l.colStart} / ${options.l.colSpan};
     }
-    `}
+  `}
 
-    ${ ({ options }) => options && css`
+  ${ ({ options }) => options && css`
     @media screen and ${breakpoints.tabletSm} {
       grid-column: ${options.m.colStart} / ${options.m.colSpan};
     }
-    `}
+  `}
 
   ${ ({ options }) => options && css`
     @media screen and ${breakpoints.mobile} {

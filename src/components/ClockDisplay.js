@@ -19,7 +19,7 @@ const StyledSection = styled.section`
     gap: 1rem;
   }
 
-  @media screen and ${breakpoints.tabletSm} {
+  ${`@media screen and ${breakpoints.tabletSm}`} {
     .flex {
       flex-direction: column;
       align-items: flex-start;
@@ -28,7 +28,7 @@ const StyledSection = styled.section`
     }
   }
 
-  @media screen and ${breakpoints.mobile} {
+  ${`@media screen and ${breakpoints.mobile}`} {
     .flex {
       gap: 3rem;
     }

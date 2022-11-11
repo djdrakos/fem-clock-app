@@ -22,14 +22,14 @@ const Background = styled.div`
   background-position: 50% 50%;
 
 
-  @media screen and ${breakpoints.tabletSm} {
+  ${`@media screen and ${breakpoints.tabletSm}`} {
     --bgImgDay: url(${bgMedDay});
-  --bgImgNight: url(${bgMedNight});
-}
-  @media screen and ${breakpoints.mobile} {
+    --bgImgNight: url(${bgMedNight});
+  }
+  ${`@media screen and ${breakpoints.mobile}`} {
     --bgImgDay: url(${bgSmDay});
-  --bgImgNight: url(${bgSmNight});
-}
+    --bgImgNight: url(${bgSmNight});
+  }
 `
 
 export default Background
