@@ -19,13 +19,14 @@ export const GlobalStyles = createGlobalStyle`
 
 html, body, #root {
   height: 100%;
-  overflow: hidden;
+  overflow: auto;
 }
 
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--white);
+  background: var(--grey-mid);
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   scroll-behavior: smooth;
@@ -70,7 +71,7 @@ button {
 }
 
 .flex {
-    display: flex;
-  }
+  display: flex;
+}
 
 `
