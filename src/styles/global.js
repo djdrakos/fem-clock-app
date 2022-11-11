@@ -26,7 +26,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--white);
-  background-color: var(--black);
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   scroll-behavior: smooth;
