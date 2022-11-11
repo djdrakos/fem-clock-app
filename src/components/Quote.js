@@ -69,7 +69,7 @@ const Quote = forwardRef((props, forwardedRef) => {
           <GridItem s={12} m={11} l={7} xl={6} className='flex'>
             <div className="wrapper">
               { quote === null
-              ? <p>Loading Quote...</p>
+              ? <P>Loading Quote...</P>
               : 
               <>
                 <P as="blockquote">

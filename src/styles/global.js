@@ -19,6 +19,7 @@ export const GlobalStyles = createGlobalStyle`
 
 html, body, #root {
   height: 100%;
+  overflow: hidden;
 }
 
 body {
@@ -26,19 +27,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: var(--white);
   background-color: var(--black);
-  /* background-image: ${({ theme }) => theme.background}; */
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   scroll-behavior: smooth;
-  /* -webkit-transition: background-color .25s ease-out, color .25s ease-out;
-  -moz-transition: background-color .25s ease-out, color .25s ease-out;
-  -o-transition: background-color .25s ease-out, color .25s ease-out;
-  transition: background-color .25s ease-out, color .25s ease-out; */
 }
 
 #root {
   margin: 0 auto;
-  overflow: scroll;
 }
 
 img, picture {

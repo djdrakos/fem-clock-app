@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { forwardRef } from 'react';
 import GridContainer from './GridContainer'
 import GridItem from './GridItem'
 import { H2, H6 } from './Typography'
@@ -61,11 +62,11 @@ const StyledContent = styled(Collapsible.Content)`
   }
 `
 
-export default function CollapsibleDetailsContent({clockOptions, ...props}) {
+const CollapsibleDetailsContent = forwardRef(({clockOptions, ...props}, forwardedRef) => {
   const { dayOfWeek, dayofYear, timezone, week } = clockOptions
 
 return (
-    <StyledContent {...props}>
+    <StyledContent {...props} ref={forwardedRef}>
       <GridContainer as="section" alignContent="center">
         <GridItem m={6} className="flex">
           <hgroup>
@@ -101,4 +102,6 @@ return (
       </GridContainer>
     </StyledContent>
   )
-}
+})
+
+export default CollapsibleDetailsContent
