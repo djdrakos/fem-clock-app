@@ -7,7 +7,7 @@ const StyledDiv = styled.div.attrs( props => ({ style:  props }))`
     @media screen and ${breakpoints.desktop} {
       grid-column:  ${options.xl.colStart} / ${options.xl.colSpan};
     }
-    `}
+  `}
 
   ${ ({ options }) => options && css`
     @media screen and ${breakpoints.tabletLg} {

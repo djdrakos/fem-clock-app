@@ -8,6 +8,7 @@ import breakpoints from '../styles/breakpoints'
 import * as Collapsible from '@radix-ui/react-collapsible';
 
 const StyledMain = styled(Collapsible.Root)`
+  --details-height: 50vh;
   z-index: 1;
   position: relative;
   display: flex;
@@ -17,6 +18,10 @@ const StyledMain = styled(Collapsible.Root)`
     height: 50vh;
     padding-block-start: 3.5em;
     background-color: hsla(0, 0%, 0%, .4);
+    transition: margin-top 1s ease;
+    &.visually-hidden {
+      margin-top: calc(-1 * var(--details-height));
+    }
   }
 
   .clock { 
@@ -25,27 +30,18 @@ const StyledMain = styled(Collapsible.Root)`
     background-color: hsla(0, 0%, 0%, .4);
   }
 
-  .details  { 
+  .details { 
     overflow: hidden;
-    --details-height: 50vh;
     max-height: var(--details-height);
-    }
+  }
 
-  .details[data-state='open']{
+  .details[data-state='open'] {
     height: var(--details-height);
   }
 
-  @media (prefers-reduced-motion: no-preference) { 
-    .details[data-state='closed'] {
-      animation-name: slideUp; 
-      animation-duration: 2000ms; 
-      animation-iteration-count: 1;
-      animation-timing-function: linear;
-    }  
-  }
-
-
   ${`@media screen and ${breakpoints.tabletSm}`} {
+    --details-height: 42vh;
+
     .quote {
       padding-block-start: 5em;
     } 
@@ -53,13 +49,11 @@ const StyledMain = styled(Collapsible.Root)`
     .clock {
       padding-block-end: 4rem;
     }
-    
-    .details { 
-      --details-height: 42vh;
-    }
   }
 
   ${`@media screen and ${breakpoints.mobile}`} {
+    --details-height: 38vh;
+
     .quote {
       padding-block-start: 2em;
     } 
@@ -67,19 +61,18 @@ const StyledMain = styled(Collapsible.Root)`
     .clock {
       padding-block-end: 2.5rem;
     }
-    
-    .details{
-      --details-height: 42vh;
-    }
-  }  
+  } 
 
-  @media (prefers-reduced-motion: reduce) {
-    button {
-      transition: none;
-    }
+  @media (prefers-reduced-motion: no-preference) { 
+    .details[data-state='closed'] {
+      animation-name: slideDown; 
+      animation-duration: 1500ms;
+      animation-iteration-count: 1;
+      animation-timing-function: linear;
+    }  
   }
 
-  @keyframes slideUp {
+  @keyframes slideDown {
     from {
       height: var(--details-height);
     }
@@ -91,14 +84,16 @@ const StyledMain = styled(Collapsible.Root)`
 
 const Main = ({currentTime, location, status, timeOfDay, clockOptions}) => {
   const [ open, setOpen ] = useState(false)
+  const [ hidden, setHidden ] = useState(false)
   const collapsibleRef = useRef()
   const quoteRef= useRef()
 
   useEffect(() => {
-    if(status === 'resolved'){
-      if(open) collapsibleRef.current.scrollIntoView({  behavior: 'smooth' })  
-      if(!open) quoteRef.current.scrollIntoView({ behavior: 'smooth' }) 
-    }
+    // if(status === 'resolved'){
+    //   if(open) collapsibleRef.current.scrollIntoView({  behavior: 'smooth' })  
+    //   if(!open) quoteRef.current.scrollIntoView({ behavior: 'smooth' }) 
+    // }
+    setHidden((prevState) => !prevState)
   }, [open, status])
   
     const toggleOpen = () => {
@@ -109,7 +104,7 @@ const Main = ({currentTime, location, status, timeOfDay, clockOptions}) => {
     <Collapsible.Root asChild open={open} onOpenChange={toggleOpen}>
       <StyledMain>
 
-        <Quote ref={quoteRef} className="quote"/>
+        <Quote ref={quoteRef} className={ hidden ? "quote visually-hidden" : "quote"} />
 
         <ClockDisplay className="clock" currentTime={currentTime} location={location} status={status} timeOfDay={timeOfDay} timezoneAbbr={clockOptions.timezoneAbbr}>
           <CollapsibleDetailsTrigger open={open} toggleOpen={toggleOpen}/>

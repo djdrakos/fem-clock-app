@@ -27,7 +27,6 @@ const StyledContent = styled(Collapsible.Content)`
   .flex {
     flex-direction: column;
     justify-content: space-between;
-    
   }
 
   .separator {
