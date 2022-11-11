@@ -25,29 +25,37 @@ flex-direction: column;
   background-color: hsla(0, 0%, 0%, .4);
 }
 
-.details {
-  transition: flex 10000ms linear
-}
-
-.details[data-state='open']  { 
-    flex: 0 0 50vh;
+.details  { 
+  overflow: hidden;
+  --details-height: 50vh;
+  max-height: var(--details-height);
   }
 
-.details[data-state='closed']  { 
-    flex: 0 0 0;
+.details[data-state='open']{
+  height: var(--details-height);
 }
+
+@media (prefers-reduced-motion: no-preference) { 
+  .details[data-state='closed'] {
+    animation-name: slideUp; 
+    animation-duration: 2000ms; 
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+  }  
+}
+
 
 @media screen and ${breakpoints.tabletSm} {
   .quote {
     padding-block-start: 5em;
   } 
-
+  
   .clock {
     padding-block-end: 4rem;
   }
-
-  .details[data-state='open']  {
-      flex-basis: 42vh;
+  
+  .details { 
+    --details-height: 42vh;
   }
 }
 
@@ -55,54 +63,53 @@ flex-direction: column;
   .quote {
     padding-block-start: 2em;
   } 
-    
+  
   .clock {
     padding-block-end: 2.5rem;
   }
-
-  .details[data-state='open'] {
-      flex-basis: 38vh;
+  
+  .details{
+    --details-height: 42vh;
   }
 }  
 
 @media (prefers-reduced-motion: reduce) {
-button {
-  transition: none;
+  button {
+    transition: none;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    height: var(--details-height);
+  }
+  to {
+    height: 0;
   }
 }
 `
 
 const Main = ({currentTime, location, status, timeOfDay, clockOptions}) => {
   const [ open, setOpen ] = useState(false)
-
   const collapsibleRef = useRef()
+  const quoteRef= useRef()
 
   useEffect(() => {
-    // if(!open)
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    })
-    if(open) collapsibleRef.current.scrollIntoView({ behavior: 'smooth' })  
-  }, [open])
+    if(status === 'resolved'){
+      if(open) collapsibleRef.current.scrollIntoView({  behavior: 'smooth' })  
+      if(!open) quoteRef.current.scrollIntoView({ behavior: 'smooth' }) 
+    }
+  }, [open, status])
   
-
     const toggleOpen = () => {
-    // if(!open) window.scrollTo({
-    //   top: 0,
-    //   behavior: "smooth"
-    // })
-  
-    setOpen((prevState) => !prevState)
-
-    // if(open) collapsibleRef.current.scrollIntoView({ behavior: 'smooth' })  
+      setOpen((prevState) => !prevState)
   }
 
   return (
-    <Collapsible.Root asChild open={open} onOpenChange={setOpen}>
+    <Collapsible.Root asChild open={open} onOpenChange={toggleOpen}>
       <StyledMain>
 
-        <Quote className="quote"/>
+        <Quote ref={quoteRef} className="quote"/>
 
         <ClockDisplay className="clock" currentTime={currentTime} location={location} status={status} timeOfDay={timeOfDay} timezoneAbbr={clockOptions.timezoneAbbr}>
           <CollapsibleDetailsTrigger open={open} toggleOpen={toggleOpen}/>
