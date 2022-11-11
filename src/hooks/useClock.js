@@ -30,7 +30,7 @@ const useClock = () => {
       try {
         setStatus('pending')
 
-        const res = await fetchAndJSON("http://worldtimeapi.org/api/ip")
+        const res = await fetchAndJSON("https://worldtimeapi.org/api/ip")
         
         setStartTime(Date.now())
         
