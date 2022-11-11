@@ -12,7 +12,7 @@ const useClock = () => {
     week: '',
   })
   const [ currentTime, setCurrentTime ] = useState(null)
-  const [ location, setLocation ] = useState(() => sessionStorage.getItem('location') || null)
+  const [ location, setLocation ] = useState(() => JSON.parse(sessionStorage.getItem('location')) || null)
   const [ startTime, setStartTime ] = useState(null)
   const [ status, setStatus ] = useState('idle')
   const [ timeOfDay, setTimeOfDay ] = useState(null)
@@ -71,7 +71,6 @@ const useClock = () => {
     setIPLocation()
   }
   }, [])
-
 
   useEffect(() => {
     if(status === 'resolved') {
