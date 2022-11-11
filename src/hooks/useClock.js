@@ -12,7 +12,7 @@ const useClock = () => {
     week: '',
   })
   const [ currentTime, setCurrentTime ] = useState(null)
-  const [ location, setLocation ] = useState(null)
+  const [ location, setLocation ] = useState(() => sessionStorage.getItem('location') || null)
   const [ startTime, setStartTime ] = useState(null)
   const [ status, setStatus ] = useState('idle')
   const [ timeOfDay, setTimeOfDay ] = useState(null)
@@ -28,10 +28,9 @@ const useClock = () => {
   useEffect(() => {
     const setClock = async () => {
       try {
-        setStatus('pending')
 
+        setStatus('pending')
         const res = await fetchAndJSON("https://worldtimeapi.org/api/ip")
-        
         setStartTime(Date.now())
         
         const formattedClockOptions = {
@@ -43,24 +42,36 @@ const useClock = () => {
           week: res.week_number,
         }
         
-        setClockOptions(formattedClockOptions)
-  
         const now = new Date(formattedClockOptions.startTime)
+        setClockOptions(formattedClockOptions)
         setCurrentTime(`${now.getHours()}:${now.getMinutes()}`)
         setTimeOfDay(getTimeOfDay(`${now.getHours()}:${now.getMinutes()}`))
-
-        const {city, country} = await fetchAndJSON(`https://api.getgeoapi.com/v2/ip/check?api_key=${process.env.REACT_APP_IPGEO_API_KEY}`)
-        setLocation(`${city.name}, ${country.code}`)
-
       } catch (error) {
         throw error
       } finally {
         setStatus('resolved')
       }
     }
-
+    
     setClock()
   }, [getTimeOfDay])
+  
+  useEffect(() => {
+    if(!location) {
+    const setIPLocation = async () => {
+      try {
+        const {city, country} = await fetchAndJSON(`https://api.getgeoapi.com/v2/ip/check?api_key=${process.env.REACT_APP_IPGEO_API_KEY}`)
+        setLocation(`${city.name}, ${country.code}`) 
+        sessionStorage.setItem('location', JSON.stringify(`${city.name}, ${country.code}`))
+      } catch (error) {
+        throw error
+      }
+    }
+    
+    setIPLocation()
+  }
+  }, [])
+
 
   useEffect(() => {
     if(status === 'resolved') {
