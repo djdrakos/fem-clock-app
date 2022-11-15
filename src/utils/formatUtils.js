@@ -5,7 +5,7 @@ export function formatTimezoneLocation(string) {
 
 export function formatDayOfWeek(number) {
   const daysOfTheWeek = {
-    1: 'Mondau',
+    1: 'Monday',
     2: 'Tuesday',
     3: 'Wednesday',
     4: 'Thursday',
