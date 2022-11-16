@@ -1,7 +1,6 @@
 # Clock app
 
 <div align='center'>
-
 [Solution Repo](https://github.com/dj-drakos/fem-clock-app) | [Live Site](https://fem-clock-app-ten.vercel.app/)
 </div>
 <br>
@@ -12,12 +11,8 @@ This is my solution to the [Clock App Challenge](https://www.frontendmentor.io/c
 
 ## Table of contents
 - [Tools & Resources](#tools--resources)
-- [Hightlights](#highlights)
-  - [Fluid Grid](#✌️-fluid-grid)
-  - [Accessible Collapsible Element](#🙌-accessible-collapsible-element)
-  - [Continued Development](#🧑‍🔬-continued-development)
+- [Highlights](#highlights)
 - [The Challenge](#the-challenge)
-<br>
 <br>
 
 ---
@@ -35,20 +30,17 @@ This is my solution to the [Clock App Challenge](https://www.frontendmentor.io/c
 - CSS custom properties
 - Flexbox/CSS Grid
 <br>
-<br>
 
 ---
 <br>
 
 ## Highlights
-  - [Fluid Grid](#✌️-fluid-grid)
-  - [Accessible Collapsible Element](#🙌-accessible-collapsible-element)
-  - [Continued development](#🧑‍🔬-continued-development)
-<br>
+  - [Fluid Grid](#fluid-grid)
+  - [Accessible Collapsible Element](#accessible-collapsible-element)
+  - [Continued development](#continued-development)
 <br>
 
-### ✌️ Fluid Grid
-<br>
+### Fluid Grid
 
 The desktop and tablet versions of the UI were designed using a 12-column grid. The content is divided into three major sections: a random quote, the clock display, and a collapsible clock details panel. <br>
 
@@ -81,14 +73,12 @@ Which looks like this:
 <br>
 <br>
 <div align="center">
-  <video src="./src/assets/readme/fluid_grid.mp4" controls='controls' style='max-width: 700px;'></video>
+  [Fluid Grid](./src/assets/readme/fluid_grid.mp4)
 </div>
 <br>
 <br>
 
-
-### 🙌 Accessible Collapsible Element
-<br>
+### Accessible Collapsible Element
 
 It was important to incorporate functionality that led with accessibility. 
 <br>
@@ -98,22 +88,18 @@ I used several [Radix](https://www.radix-ui.com/) primitives, including the [Col
 
 It was a fun challenge adding an animation on top of the Radix Collapsible because the API doesn't expose state for controlling the toggle, and the render method disrupts the timing of external transition effects. With a combination of scroll methods, keyframe animations, and a class toggle, I created a smooth mount and unmount effect that keeps the collapsible component fixed to the bottom edge of the viewport across all screen breakpoints, and complies with accessibility reccomendations for toggling element visibility. 
 <br>
-<br>
 
   <div align="center">
-    <video src="./src/assets/readme/toggle_animation.mp4" controls='controls' style='max-width: 700px;'></video>
+    [Toggle Collapsible Animation](./src/assets/readme/toggle_animation.mp4)
   </div>
 <br>
-<br>
 
-### 🧑‍🔬 Continued development
-<br>
+### Continued Development
 
 I built the app during a 1-week sprint. These are my priorities if I had one more week:
 - 🧪&nbsp; Write unit and integration tests for CI
 - 🧪&nbsp; Add error handling and error boundaries to the component tree
 - 🧪&nbsp; Do a (more robust) Accessibility audit
-<br>
 <br>
 
 ---
@@ -146,5 +132,3 @@ I built the app during a 1-week sprint. These are my priorities if I had one mor
   - The sun icon and the daytime background image between 5am and 6pm
   - The moon icon and the nighttime background image between 6pm and 5am
 - ✅&nbsp; Generate a new random programming quote whenever the refresh icon is clicked
-<br>
-<br>
