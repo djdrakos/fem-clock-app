@@ -81,7 +81,12 @@ Which looks like this:
 <br>
 <br>
 <div align="center">
+<<<<<<< Updated upstream
   <video src="./src/assets/readme/fluid_grid.mp4" controls='controls' style='max-width: 700px;'></video>
+=======
+
+    [Fluid Grid Animation](./src/assets/readme/fluid_grid.gif)
+>>>>>>> Stashed changes
 </div>
 <br>
 <br>
@@ -98,6 +103,14 @@ I used several [Radix](https://www.radix-ui.com/) primitives, including the [Col
 
 It was a fun challenge adding an animation on top of the Radix Collapsible because the API doesn't expose state for controlling the toggle, and the render method disrupts the timing of external transition effects. With a combination of scroll methods, keyframe animations, and a class toggle, I created a smooth mount and unmount effect that keeps the collapsible component fixed to the bottom edge of the viewport across all screen breakpoints, and complies with accessibility reccomendations for toggling element visibility. 
 <br>
+<<<<<<< Updated upstream
+=======
+
+  <div align="center">
+
+      [Toggle Collapsible Animation](./src/assets/readme/toggle_collapsible.gif)
+  </div>
+>>>>>>> Stashed changes
 <br>
 
   <div align="center">
