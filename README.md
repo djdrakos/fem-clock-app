@@ -44,7 +44,6 @@ This is my solution to the [Clock App Challenge](https://www.frontendmentor.io/c
   - [Fluid Grid](#✌️-fluid-grid)
   - [Accessible Collapsible Element](#🙌-accessible-collapsible-element)
   - [Continued development](#🧑‍🔬-continued-development)
-  - [Useful resources](#useful-resources)
 <br>
 <br>
 
