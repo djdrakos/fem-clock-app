@@ -1,6 +1,7 @@
 # Clock app
 
 <div align='center'>
+
 [Solution Repo](https://github.com/dj-drakos/fem-clock-app) | [Live Site](https://fem-clock-app-ten.vercel.app/)
 </div>
 <br>
@@ -77,7 +78,6 @@ Which looks like this:
 ![](src/assets/readme/fluid_grid.gif)
 </div>
 <br>
-<br>
 
 ### Accessible Collapsible Element
 
@@ -113,7 +113,6 @@ I built the app during a 1-week sprint. These are my priorities if I had one mor
     <img src="./src/assets/readme/challenge_screenshot.png" style="max-width: 500px;" />
   </div>
 <br>
-<br>
 
 ### Users should be able to:
 - ✅&nbsp; View the optimal layout for the site depending on their device's screen size
@@ -122,7 +121,6 @@ I built the app during a 1-week sprint. These are my priorities if I had one mor
 - ✅&nbsp; View additional information about the date and time in the expanded state
 - ✅&nbsp; Be shown the correct greeting and background image based on the time of day they're visiting the site
 - ✅&nbsp; Generate random programming quotes by clicking the refresh icon near the quote
-<br>
 <br>
 
 ### Expected Behaviour:
