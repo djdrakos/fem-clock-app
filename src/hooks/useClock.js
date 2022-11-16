@@ -70,7 +70,7 @@ const useClock = () => {
     
     setIPLocation()
   }
-  }, [])
+  }, [location])
 
   useEffect(() => {
     if(status === 'resolved') {
