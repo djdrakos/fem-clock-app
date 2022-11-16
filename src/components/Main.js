@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useEffect, useRef, useState } from 'react' 
+import { useRef, useState } from 'react' 
 import ClockDisplay from './ClockDisplay';
 import CollapsibleDetailsContent from './CollapsibleDetailsContent';
 import CollapsibleDetailsTrigger from './CollapsibleDetailsTrigger'
@@ -84,27 +84,18 @@ const StyledMain = styled(Collapsible.Root)`
 
 const Main = ({currentTime, location, status, timeOfDay, clockOptions}) => {
   const [ open, setOpen ] = useState(false)
-  const [ hidden, setHidden ] = useState(false)
   const collapsibleRef = useRef()
   const quoteRef= useRef()
-
-  useEffect(() => {
-    // if(status === 'resolved'){
-    //   if(open) collapsibleRef.current.scrollIntoView({  behavior: 'smooth' })  
-    //   if(!open) quoteRef.current.scrollIntoView({ behavior: 'smooth' }) 
-    // }
-    setHidden((prevState) => !prevState)
-  }, [open, status])
   
-    const toggleOpen = () => {
+  const toggleOpen = () => {
       setOpen((prevState) => !prevState)
   }
 
   return (
-    <Collapsible.Root asChild open={open} onOpenChange={toggleOpen}>
+    <Collapsible.Root asChild>
       <StyledMain>
 
-        <Quote ref={quoteRef} className={ hidden ? "quote visually-hidden" : "quote"} />
+        <Quote ref={quoteRef} className={ open ? "quote visually-hidden" : "quote"} />
 
         <ClockDisplay className="clock" currentTime={currentTime} location={location} status={status} timeOfDay={timeOfDay} timezoneAbbr={clockOptions.timezoneAbbr}>
           <CollapsibleDetailsTrigger open={open} toggleOpen={toggleOpen}/>
