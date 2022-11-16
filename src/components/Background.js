@@ -15,21 +15,21 @@ const Background = styled.div`
   position: absolute;
   height: 100%;
   width: 100%;
-  background-color: #FFFFFF;
+  background-color: ${({ theme }) => theme.background};
+  background-color: var(--grey-mid);
   background-image: ${({ theme }) => theme.type === 'day' ? 'var(--bgImgDay)' : 'var(--bgImgNight)'};
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
 
-
-  @media screen and ${breakpoints.tabletSm} {
+  ${`@media screen and ${breakpoints.tabletSm}`} {
     --bgImgDay: url(${bgMedDay});
-  --bgImgNight: url(${bgMedNight});
-}
-  @media screen and ${breakpoints.mobile} {
+    --bgImgNight: url(${bgMedNight});
+  }
+  ${`@media screen and ${breakpoints.mobile}`} {
     --bgImgDay: url(${bgSmDay});
-  --bgImgNight: url(${bgSmNight});
-}
+    --bgImgNight: url(${bgSmNight});
+  }
 `
 
 export default Background

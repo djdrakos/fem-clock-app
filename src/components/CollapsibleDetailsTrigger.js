@@ -28,7 +28,7 @@ const StyledTrigger = styled(Collapsible.Trigger)`
     }
   }
   
-  @media screen and ${breakpoints.mobile} {
+  ${`@media screen and ${breakpoints.mobile}`} {
     --arrowBgSize: 2rem;
     height: 2.5rem;
     width: 7.1875rem;

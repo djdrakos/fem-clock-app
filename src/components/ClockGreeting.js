@@ -6,16 +6,16 @@ import breakpoints from '../styles/breakpoints';
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
 
 const StyledClockGreeting = styled(H4)`
-    display: grid;
-    grid-template-columns: 2.5rem auto auto;
-    align-items: center;
-    justify-content: start;
-    
-    &::after {
-      content: ", it\'s currently";
-    }
+  display: grid;
+  grid-template-columns: 2.5rem auto auto;
+  align-items: center;
+  justify-content: start;
+  
+  &::after {
+    content: ", it\'s currently";
+  }
 
-  @media screen and ${breakpoints.mobile} {
+  ${`@media screen and ${breakpoints.mobile}`} {
     &::after {
       content: none;
     }

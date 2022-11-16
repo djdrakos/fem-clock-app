@@ -37,7 +37,7 @@ const StyledFigure = styled.figure`
     }
 
     &:hover, &:focus {
-    path { opacity: 1; }
+      path { opacity: 1; }
     }
   }
 `
