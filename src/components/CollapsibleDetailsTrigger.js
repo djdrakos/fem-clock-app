@@ -22,6 +22,10 @@ const StyledTrigger = styled(Collapsible.Trigger)`
   letter-spacing: .3125rem;
   padding: .5rem;
 
+  svg {
+	max-height: var(--arrowBgSize);
+  }
+
   :hover {
     circle {
       fill: var(--grey-light);
@@ -44,7 +48,7 @@ export default function CollapsibleDetailsTrigger({open, toggleOpen}) {
   return (
     <StyledTrigger onClick={toggleOpen}>
       { !open ? 'More' : 'Less' }
-      <AccessibleIcon label="details about the current clock">
+      <AccessibleIcon className="icon-wrapper" label="details about the current clock">
       { !open ? <IconArrowDown /> : <IconArrowUp /> }
       </AccessibleIcon>
     </StyledTrigger>
