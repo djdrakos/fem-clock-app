@@ -23,8 +23,8 @@ const StyledTrigger = styled(Collapsible.Trigger)`
   padding: .5rem;
 
   :hover {
-    span {
-      background-color: var(--grey-light);
+    circle {
+      fill: var(--grey-light);
     }
   }
   
