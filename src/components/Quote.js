@@ -52,7 +52,7 @@ const Quote = forwardRef((props, forwardedRef) => {
       { duration: 500 }
     )
     setQuote(null)
-    fetchAndJSON("https://programming-quotes-api.herokuapp.com/Quotes/random")
+    fetchAndJSON("https://quotable.io/random")
       .then((quote) => setQuote(quote))
   }, [])
   
@@ -73,7 +73,7 @@ const Quote = forwardRef((props, forwardedRef) => {
               : 
               <>
                 <P as="blockquote">
-                  {quote?.en}
+                  {quote?.content}
                 </P>
                 <H5 as="figcaption">
                   {quote?.author}
